@@ -1,0 +1,5 @@
+../stdperiph/src/misc.c:103:6:NVIC_PriorityGroupConfig	1
+../stdperiph/src/misc.c:119:6:NVIC_Init	2
+../stdperiph/src/misc.c:163:6:NVIC_SetVectorTable	1
+../stdperiph/src/misc.c:182:6:NVIC_SystemLPConfig	2
+../stdperiph/src/misc.c:206:6:SysTick_CLKSourceConfig	2

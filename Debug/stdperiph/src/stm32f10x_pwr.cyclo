@@ -1,0 +1,9 @@
+../stdperiph/src/stm32f10x_pwr.c:118:6:PWR_DeInit	1
+../stdperiph/src/stm32f10x_pwr.c:130:6:PWR_BackupAccessCmd	3
+../stdperiph/src/stm32f10x_pwr.c:143:6:PWR_PVDCmd	3
+../stdperiph/src/stm32f10x_pwr.c:164:6:PWR_PVDLevelConfig	9
+../stdperiph/src/stm32f10x_pwr.c:184:6:PWR_WakeUpPinCmd	3
+../stdperiph/src/stm32f10x_pwr.c:203:6:PWR_EnterSTOPMode	6
+../stdperiph/src/stm32f10x_pwr.c:242:6:PWR_EnterSTANDBYMode	1
+../stdperiph/src/stm32f10x_pwr.c:267:12:PWR_GetFlagStatus	5
+../stdperiph/src/stm32f10x_pwr.c:293:6:PWR_ClearFlag	3

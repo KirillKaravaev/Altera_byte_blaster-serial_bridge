@@ -1,0 +1,3 @@
+../src/ft245rom.c:33:10:ft245rom_checksum	2
+../src/ft245rom.c:48:5:ft245rom_init	7
+../src/ft245rom.c:115:10:ft245rom_read	1

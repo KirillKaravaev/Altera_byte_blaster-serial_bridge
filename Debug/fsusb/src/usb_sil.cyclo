@@ -1,0 +1,3 @@
+../fsusb/src/usb_sil.c:48:10:USB_SIL_Init	1
+../fsusb/src/usb_sil.c:69:10:USB_SIL_Write	1
+../fsusb/src/usb_sil.c:89:10:USB_SIL_Read	1

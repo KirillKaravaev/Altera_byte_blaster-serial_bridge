@@ -1,0 +1,2 @@
+../src/memop.c:3:7:memcpy	2
+../src/memop.c:16:7:memset	2

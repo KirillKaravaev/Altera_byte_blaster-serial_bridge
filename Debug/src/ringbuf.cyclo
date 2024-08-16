@@ -1,0 +1,6 @@
+../src/ringbuf.c:35:5:ringbuf_init	3
+../src/ringbuf.c:51:5:ringbuf_use_len	1
+../src/ringbuf.c:57:5:ringbuf_is_full	1
+../src/ringbuf.c:63:5:ringbuf_get	2
+../src/ringbuf.c:84:5:ringbuf_put	1
+../src/ringbuf.c:100:5:ringbuf_putc	2

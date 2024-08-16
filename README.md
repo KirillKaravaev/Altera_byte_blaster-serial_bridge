@@ -1,2 +1,2 @@
-# Altera_byte_blaster-serial_bridge
-Altera usb byte blaster + usb-uart converter (serial bridge) on stm32f103
+# stm32_altera_usb_blaster
+Port of https://github.com/Icenowy/USB-Blaster-GCC to Stm32CubeIDE

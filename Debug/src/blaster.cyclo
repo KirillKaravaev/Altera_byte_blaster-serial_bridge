@@ -1,0 +1,5 @@
+../src/blaster.c:72:13:blaster_usbrecv	4
+../src/blaster.c:99:13:blaster_usbsend	6
+../src/blaster.c:140:13:blaster_ioproc	7
+../src/blaster.c:176:6:blaster_init	1
+../src/blaster.c:200:6:blaster_exec	1

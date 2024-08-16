@@ -1,0 +1,12 @@
+../stdperiph/src/stm32f10x_bkp.c:125:6:BKP_DeInit	1
+../stdperiph/src/stm32f10x_bkp.c:139:6:BKP_TamperPinLevelConfig	3
+../stdperiph/src/stm32f10x_bkp.c:152:6:BKP_TamperPinCmd	3
+../stdperiph/src/stm32f10x_bkp.c:165:6:BKP_ITConfig	3
+../stdperiph/src/stm32f10x_bkp.c:185:6:BKP_RTCOutputConfig	5
+../stdperiph/src/stm32f10x_bkp.c:206:6:BKP_SetRTCCalibrationValue	1
+../stdperiph/src/stm32f10x_bkp.c:227:6:BKP_WriteBackupRegister	43
+../stdperiph/src/stm32f10x_bkp.c:246:10:BKP_ReadBackupRegister	43
+../stdperiph/src/stm32f10x_bkp.c:264:12:BKP_GetFlagStatus	1
+../stdperiph/src/stm32f10x_bkp.c:274:6:BKP_ClearFlag	1
+../stdperiph/src/stm32f10x_bkp.c:285:10:BKP_GetITStatus	1
+../stdperiph/src/stm32f10x_bkp.c:295:6:BKP_ClearITPendingBit	1
