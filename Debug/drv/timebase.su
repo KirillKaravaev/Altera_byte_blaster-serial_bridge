@@ -1,5 +1,5 @@
-D:/Program/STM32/usb-blaster_files/stm32_altera_usb_blaster-main/cmsis/inc/core_cm3.h:1390:22:NVIC_SetPriority	16	static
-D:/Program/STM32/usb-blaster_files/stm32_altera_usb_blaster-main/cmsis/inc/core_cm3.h:1517:26:SysTick_Config	16	static
+D:/Program/STM32/Altera blaster + COM - port/Altera_byte_blaster-serial_bridge/cmsis/inc/core_cm3.h:1390:22:NVIC_SetPriority	16	static
+D:/Program/STM32/Altera blaster + COM - port/Altera_byte_blaster-serial_bridge/cmsis/inc/core_cm3.h:1517:26:SysTick_Config	16	static
 ../drv/timebase.c:42:6:SysTick_Handler	4	static
 ../drv/timebase.c:50:6:timebase_init	8	static
 ../drv/timebase.c:65:10:ticks	4	static

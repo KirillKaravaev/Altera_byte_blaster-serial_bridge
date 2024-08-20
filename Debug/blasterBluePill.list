@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00010e8b  00000000  00000000  00012ca5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000f24f  00000000  00000000  00023b30  2**0
+ 17 .debug_line   0000f987  00000000  00000000  00023b30  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000595ff  00000000  00000000  00032d7f  2**0
+ 18 .debug_str    0005960d  00000000  00000000  000334b7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0008c37e  2**0
+ 19 .comment      00000043  00000000  00000000  0008cac4  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002918  00000000  00000000  0008c3c4  2**2
+ 20 .debug_frame  00002918  00000000  00000000  0008cb08  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000065  00000000  00000000  0008ecdc  2**0
+ 21 .debug_line_str 00000073  00000000  00000000  0008f420  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5100,20 +5100,20 @@ static void blaster_usbrecv(void)
         return;
     }
     
-    if (GetENDPOINT(ENDP3) & EP_DTOG_TX) {
- 800207c:	2003      	movs	r0, #3
+    if (GetENDPOINT(ENDP2) & EP_DTOG_TX) {
+ 800207c:	2002      	movs	r0, #2
  800207e:	f7ff fb6b 	bl	8001758 <GetENDPOINT>
  8002082:	4603      	mov	r3, r0
  8002084:	f003 0340 	and.w	r3, r3, #64	@ 0x40
  8002088:	2b00      	cmp	r3, #0
  800208a:	d00c      	beq.n	80020a6 <blaster_usbrecv+0x46>
         /* read from buffer 0 */
-        len = GetEPDblBuf0Count(ENDP3);
- 800208c:	2003      	movs	r0, #3
+        len = GetEPDblBuf0Count(ENDP2);
+ 800208c:	2002      	movs	r0, #2
  800208e:	f7ff feef 	bl	8001e70 <GetEPDblBuf0Count>
  8002092:	4603      	mov	r3, r0
  8002094:	80fb      	strh	r3, [r7, #6]
-        PMAToUserBufferCopy(s_recv_buffer, ENDP3_RXADDR0, len);
+        PMAToUserBufferCopy(s_recv_buffer, ENDP2_RXADDR0, len);
  8002096:	88fb      	ldrh	r3, [r7, #6]
  8002098:	461a      	mov	r2, r3
  800209a:	f44f 7180 	mov.w	r1, #256	@ 0x100
@@ -5122,12 +5122,12 @@ static void blaster_usbrecv(void)
  80020a4:	e00b      	b.n	80020be <blaster_usbrecv+0x5e>
     } else {
         /* read from buffer 1 */
-        len = GetEPDblBuf1Count(ENDP3);
- 80020a6:	2003      	movs	r0, #3
+        len = GetEPDblBuf1Count(ENDP2);
+ 80020a6:	2002      	movs	r0, #2
  80020a8:	f7ff ff00 	bl	8001eac <GetEPDblBuf1Count>
  80020ac:	4603      	mov	r3, r0
  80020ae:	80fb      	strh	r3, [r7, #6]
-        PMAToUserBufferCopy(s_recv_buffer, ENDP3_RXADDR1, len);
+        PMAToUserBufferCopy(s_recv_buffer, ENDP2_RXADDR1, len);
  80020b0:	88fb      	ldrh	r3, [r7, #6]
  80020b2:	461a      	mov	r2, r3
  80020b4:	f44f 71a0 	mov.w	r1, #320	@ 0x140
@@ -5146,9 +5146,9 @@ static void blaster_usbrecv(void)
  80020ca:	4b07      	ldr	r3, [pc, #28]	@ (80020e8 <blaster_usbrecv+0x88>)
  80020cc:	2200      	movs	r2, #0
  80020ce:	701a      	strb	r2, [r3, #0]
-    FreeUserBuffer(ENDP3, EP_DBUF_OUT);
+    FreeUserBuffer(ENDP2, EP_DBUF_OUT);
  80020d0:	2101      	movs	r1, #1
- 80020d2:	2003      	movs	r0, #3
+ 80020d2:	2002      	movs	r0, #2
  80020d4:	f7ff ff08 	bl	8001ee8 <FreeUserBuffer>
  80020d8:	e002      	b.n	80020e0 <blaster_usbrecv+0x80>
         return;
@@ -10578,27 +10578,27 @@ else{
  8003e1c:	20000330 	.word	0x20000330
  8003e20:	20000000 	.word	0x20000000
 
-08003e24 <EP3_OUT_Callback>:
+08003e24 <EP2_OUT_Callback>:
 * Input          : None.
 * Output         : None.
 * Return         : None.
 *******************************************************************************/
-void EP3_OUT_Callback(void)
+void EP2_OUT_Callback(void)
 {
  8003e24:	b580      	push	{r7, lr}
  8003e26:	b082      	sub	sp, #8
  8003e28:	af00      	add	r7, sp, #0
 if(SetupPin){
- 8003e2a:	4b0d      	ldr	r3, [pc, #52]	@ (8003e60 <EP3_OUT_Callback+0x3c>)
+ 8003e2a:	4b0d      	ldr	r3, [pc, #52]	@ (8003e60 <EP2_OUT_Callback+0x3c>)
  8003e2c:	781b      	ldrb	r3, [r3, #0]
  8003e2e:	2b00      	cmp	r3, #0
- 8003e30:	d00f      	beq.n	8003e52 <EP3_OUT_Callback+0x2e>
+ 8003e30:	d00f      	beq.n	8003e52 <EP2_OUT_Callback+0x2e>
 	uint16_t USB_Rx_Cnt;
 
   /* Get the received data buffer and update the counter */
-  USB_Rx_Cnt = USB_SIL_Read(EP3_OUT, USB_Rx_Buffer);
- 8003e32:	490c      	ldr	r1, [pc, #48]	@ (8003e64 <EP3_OUT_Callback+0x40>)
- 8003e34:	2003      	movs	r0, #3
+  USB_Rx_Cnt = USB_SIL_Read(EP2_OUT, USB_Rx_Buffer);
+ 8003e32:	490c      	ldr	r1, [pc, #48]	@ (8003e64 <EP2_OUT_Callback+0x40>)
+ 8003e34:	2002      	movs	r0, #2
  8003e36:	f7fe f8ee 	bl	8002016 <USB_SIL_Read>
  8003e3a:	4603      	mov	r3, r0
  8003e3c:	80fb      	strh	r3, [r7, #6]
@@ -10610,21 +10610,21 @@ if(SetupPin){
  8003e3e:	88fb      	ldrh	r3, [r7, #6]
  8003e40:	b2db      	uxtb	r3, r3
  8003e42:	4619      	mov	r1, r3
- 8003e44:	4807      	ldr	r0, [pc, #28]	@ (8003e64 <EP3_OUT_Callback+0x40>)
+ 8003e44:	4807      	ldr	r0, [pc, #28]	@ (8003e64 <EP2_OUT_Callback+0x40>)
  8003e46:	f7ff fe23 	bl	8003a90 <USB_To_USART_Send_Data>
 
   /* Enable the receive of data on EP3 */
-  SetEPRxValid(ENDP3);
- 8003e4a:	2003      	movs	r0, #3
+  SetEPRxValid(ENDP2);
+ 8003e4a:	2002      	movs	r0, #2
  8003e4c:	f7fd fd56 	bl	80018fc <SetEPRxValid>
 }
 else{
 	g_blaster_rx_req = TRUE;
 }
 }
- 8003e50:	e002      	b.n	8003e58 <EP3_OUT_Callback+0x34>
+ 8003e50:	e002      	b.n	8003e58 <EP2_OUT_Callback+0x34>
 	g_blaster_rx_req = TRUE;
- 8003e52:	4b05      	ldr	r3, [pc, #20]	@ (8003e68 <EP3_OUT_Callback+0x44>)
+ 8003e52:	4b05      	ldr	r3, [pc, #20]	@ (8003e68 <EP2_OUT_Callback+0x44>)
  8003e54:	2201      	movs	r2, #1
  8003e56:	701a      	strb	r2, [r3, #0]
 }
@@ -10945,75 +10945,75 @@ void Device_Reset(void)
  800400e:	2001      	movs	r0, #1
  8004010:	f7fd fc12 	bl	8001838 <SetEPRxStatus>
 
-    /* Initialize Endpoint 2 as INTERRUPT */
-    SetEPType(ENDP2, EP_INTERRUPT);
+    /* Initialize Endpoint 3 as INTERRUPT */
+    SetEPType(ENDP3, EP_INTERRUPT);
  8004014:	f44f 61c0 	mov.w	r1, #1536	@ 0x600
- 8004018:	2002      	movs	r0, #2
+ 8004018:	2003      	movs	r0, #3
  800401a:	f7fd fbaf 	bl	800177c <SetEPType>
-    SetEPTxAddr(ENDP2, ENDP2_TXADDR);
+    SetEPTxAddr(ENDP3, ENDP3_TXADDR);
  800401e:	f44f 71c0 	mov.w	r1, #384	@ 0x180
- 8004022:	2002      	movs	r0, #2
+ 8004022:	2003      	movs	r0, #3
  8004024:	f7fd fd5c 	bl	8001ae0 <SetEPTxAddr>
-    SetEPRxStatus(ENDP2, EP_RX_DIS);
+    SetEPRxStatus(ENDP3, EP_RX_DIS);
  8004028:	2100      	movs	r1, #0
- 800402a:	2002      	movs	r0, #2
+ 800402a:	2003      	movs	r0, #3
  800402c:	f7fd fc04 	bl	8001838 <SetEPRxStatus>
-    SetEPTxStatus(ENDP2, EP_TX_NAK);
+    SetEPTxStatus(ENDP3, EP_TX_NAK);
  8004030:	2120      	movs	r1, #32
- 8004032:	2002      	movs	r0, #2
+ 8004032:	2003      	movs	r0, #3
  8004034:	f7fd fbc8 	bl	80017c8 <SetEPTxStatus>
 
-    /* Initialize Endpoint 3 as BULK OUT */
-    SetEPType(ENDP3, EP_BULK);
+    /* Initialize Endpoint 2 as BULK OUT */
+    SetEPType(ENDP2, EP_BULK);
  8004038:	2100      	movs	r1, #0
- 800403a:	2003      	movs	r0, #3
+ 800403a:	2002      	movs	r0, #2
  800403c:	f7fd fb9e 	bl	800177c <SetEPType>
     if(SetupPin){
  8004040:	4b1c      	ldr	r3, [pc, #112]	@ (80040b4 <Device_Reset+0x150>)
  8004042:	781b      	ldrb	r3, [r3, #0]
  8004044:	2b00      	cmp	r3, #0
  8004046:	d009      	beq.n	800405c <Device_Reset+0xf8>
-    	SetEPRxAddr(ENDP3, ENDP3_RXADDR0);
- 8004048:	f44f 7180 	mov.w	r1, #256	@ 0x100
- 800404c:	2003      	movs	r0, #3
+    	SetEPRxAddr(ENDP2, ENDP2_RXADDR1);
+ 8004048:	f44f 71a0 	mov.w	r1, #320	@ 0x140
+ 800404c:	2002      	movs	r0, #2
  800404e:	f7fd fd69 	bl	8001b24 <SetEPRxAddr>
-    	SetEPRxCount(ENDP3, CDC_DATA_SIZE);
+    	SetEPRxCount(ENDP2, CDC_DATA_SIZE);
  8004052:	2140      	movs	r1, #64	@ 0x40
- 8004054:	2003      	movs	r0, #3
+ 8004054:	2002      	movs	r0, #2
  8004056:	f7fd fdd9 	bl	8001c0c <SetEPRxCount>
  800405a:	e017      	b.n	800408c <Device_Reset+0x128>
     }
     else{
-    	SetEPDoubleBuff(ENDP3);
- 800405c:	2003      	movs	r0, #3
+    	SetEPDoubleBuff(ENDP2);
+ 800405c:	2002      	movs	r0, #2
  800405e:	f7fd fc9b 	bl	8001998 <SetEPDoubleBuff>
-    	SetEPDblBuffAddr(ENDP3, ENDP3_RXADDR0, ENDP3_RXADDR1);
+    	SetEPDblBuffAddr(ENDP2, ENDP2_RXADDR0, ENDP2_RXADDR1);
  8004062:	f44f 72a0 	mov.w	r2, #320	@ 0x140
  8004066:	f44f 7180 	mov.w	r1, #256	@ 0x100
- 800406a:	2003      	movs	r0, #3
+ 800406a:	2002      	movs	r0, #2
  800406c:	f7fd fe2e 	bl	8001ccc <SetEPDblBuffAddr>
-    	SetEPDblBuffCount(ENDP3, EP_DBUF_OUT, ENDP3_RXSIZE);
+    	SetEPDblBuffCount(ENDP2, EP_DBUF_OUT, ENDP2_RXSIZE);
  8004070:	2240      	movs	r2, #64	@ 0x40
  8004072:	2101      	movs	r1, #1
- 8004074:	2003      	movs	r0, #3
+ 8004074:	2002      	movs	r0, #2
  8004076:	f7fd fe5f 	bl	8001d38 <SetEPDblBuffCount>
-    	ClearDTOG_RX(ENDP3);
- 800407a:	2003      	movs	r0, #3
+    	ClearDTOG_RX(ENDP2);
+ 800407a:	2002      	movs	r0, #2
  800407c:	f7fd fcd5 	bl	8001a2a <ClearDTOG_RX>
-    	ClearDTOG_TX(ENDP3);
- 8004080:	2003      	movs	r0, #3
+    	ClearDTOG_TX(ENDP2);
+ 8004080:	2002      	movs	r0, #2
  8004082:	f7fd fcff 	bl	8001a84 <ClearDTOG_TX>
-    	ToggleDTOG_TX(ENDP3);
- 8004086:	2003      	movs	r0, #3
+    	ToggleDTOG_TX(ENDP2);
+ 8004086:	2002      	movs	r0, #2
  8004088:	f7fd fcae 	bl	80019e8 <ToggleDTOG_TX>
     }
-    SetEPRxStatus(ENDP3, EP_RX_VALID);
+    SetEPRxStatus(ENDP2, EP_RX_VALID);
  800408c:	f44f 5140 	mov.w	r1, #12288	@ 0x3000
- 8004090:	2003      	movs	r0, #3
+ 8004090:	2002      	movs	r0, #2
  8004092:	f7fd fbd1 	bl	8001838 <SetEPRxStatus>
-    SetEPTxStatus(ENDP3, EP_TX_DIS);
+    SetEPTxStatus(ENDP2, EP_TX_DIS);
  8004096:	2100      	movs	r1, #0
- 8004098:	2003      	movs	r0, #3
+ 8004098:	2002      	movs	r0, #2
  800409a:	f7fd fb95 	bl	80017c8 <SetEPTxStatus>
 //    SetEPRxStatus(ENDP5, EP_RX_DIS);
 //    SetEPTxStatus(ENDP5, EP_TX_NAK);

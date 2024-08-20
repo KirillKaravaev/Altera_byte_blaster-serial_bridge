@@ -37,8 +37,8 @@ SOFTWARE.
 #define SEND_PACKET_SIZE            (ENDP1_TXSIZE)
 #define SEND_PACKET_VALID_SIZE      (SEND_PACKET_SIZE - FTDI_MODEM_STA_SIZE)
 
-#define RECV_BUFF_SIZE              (ENDP3_RXSIZE)
-#define SEND_BUFF_SIZE              (ENDP3_RXSIZE)
+#define RECV_BUFF_SIZE              (ENDP2_RXSIZE)
+#define SEND_BUFF_SIZE              (ENDP2_RXSIZE)
 
 #define BLASTER_HEARTBEAT_TIME      (10)    // 10ms
 
@@ -81,19 +81,19 @@ static void blaster_usbrecv(void)
         return;
     }
     
-    if (GetENDPOINT(ENDP3) & EP_DTOG_TX) {
+    if (GetENDPOINT(ENDP2) & EP_DTOG_TX) {
         /* read from buffer 0 */
-        len = GetEPDblBuf0Count(ENDP3);
-        PMAToUserBufferCopy(s_recv_buffer, ENDP3_RXADDR0, len);
+        len = GetEPDblBuf0Count(ENDP2);
+        PMAToUserBufferCopy(s_recv_buffer, ENDP2_RXADDR0, len);
     } else {
         /* read from buffer 1 */
-        len = GetEPDblBuf1Count(ENDP3);
-        PMAToUserBufferCopy(s_recv_buffer, ENDP3_RXADDR1, len);
+        len = GetEPDblBuf1Count(ENDP2);
+        PMAToUserBufferCopy(s_recv_buffer, ENDP2_RXADDR1, len);
     }
     s_recv_buff_len = len;
     s_recv_buff_idx = 0;
     g_blaster_rx_req = FALSE;
-    FreeUserBuffer(ENDP3, EP_DBUF_OUT);
+    FreeUserBuffer(ENDP2, EP_DBUF_OUT);
 }
 
 static void blaster_usbsend(void)

@@ -63,15 +63,15 @@
 #define ENDP1_TXADDR        (0xA0)
 #define ENDP1_TXSIZE        (0x40)
 
-/* EP3  */
-/* rx buffer base address */
-#define ENDP3_RXADDR0       (0x100)
-#define ENDP3_RXADDR1       (0x140)
-#define ENDP3_RXSIZE        (0x40)
-
 /* EP2  */
-#define ENDP2_TXADDR        (0x180)
-#define ENDP2_TXSIZE        (0x40)
+/* rx buffer base address */
+#define ENDP2_RXADDR0       (0x100)
+#define ENDP2_RXADDR1       (0x140)
+#define ENDP2_RXSIZE        (0x40)
+
+/* EP3  */
+#define ENDP3_TXADDR        (0x180)
+#define ENDP3_TXSIZE        (0x40)
 
 ///* EP4  */
 //#define ENDP4_RXADDR       	(0x1E0)
@@ -113,8 +113,8 @@
 #define  EP7_IN_Callback   NOP_Process
 
 #define  EP1_OUT_Callback   NOP_Process
-#define  EP2_OUT_Callback   NOP_Process
-//#define  EP3_OUT_Callback   NOP_Process
+//#define  EP2_OUT_Callback   NOP_Process
+#define  EP3_OUT_Callback   NOP_Process
 #define  EP4_OUT_Callback   NOP_Process
 #define  EP5_OUT_Callback   NOP_Process
 #define  EP6_OUT_Callback   NOP_Process

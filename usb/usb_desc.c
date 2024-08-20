@@ -74,9 +74,9 @@ const uint8_t Blaster_ConfigDescriptor[BLASTER_SIZ_CONFIG_DESC] = {
     /* 25 */
     0x07,          /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESCRIPTOR_TYPE,   /* bDescriptorType: Endpoint descriptor */
-    EP3_OUT,       /* bEndpointAddress: Endpoint 2 OUT */
+    EP2_OUT,       /* bEndpointAddress: Endpoint 2 OUT */
     0x02,          /* bmAttributes: Bulk endpoint */
-    ENDP3_RXSIZE,  /* wMaxPacketSize: 64 Bytes max  */
+    ENDP2_RXSIZE,  /* wMaxPacketSize: 64 Bytes max  */
     0x00,
     0x01,          /* bInterval: Polling Interval (1 ms) */
     /* 32 */
@@ -167,10 +167,10 @@ const uint8_t CDC_ConfigDescriptor[CDC_SIZ_CONFIG_DESC] = {
 	  0x01,   /* bSlaveInterface0: Data Class Interface */
 	  /* 37 */
 
-	  /*Endpoint 2 Descriptor*/
+	  /*Endpoint 3 Descriptor*/
 	  0x07,                           /* bLength: Endpoint Descriptor size */
 	  USB_ENDPOINT_DESCRIPTOR_TYPE,   /* bDescriptorType: Endpoint */
-	  EP2_IN,                     /* bEndpointAddress */
+	  EP3_IN,                     /* bEndpointAddress */
 	  0x03,                           /* bmAttributes: Interrupt */
 	  CDC_CMD_PACKET_SIZE,     /* wMaxPacketSize: */
 	  0x00,
@@ -201,12 +201,12 @@ const uint8_t CDC_ConfigDescriptor[CDC_SIZ_CONFIG_DESC] = {
 	  0x00,                               /* bInterval: ignore for Bulk transfer */
 	 /* 60 */
 
-	  /*Endpoint 3 OUT Descriptor*/
+	  /*Endpoint 2 OUT Descriptor*/
 	  0x07,   /* bLength: Endpoint Descriptor size */
 	  USB_ENDPOINT_DESCRIPTOR_TYPE,      /* bDescriptorType: Endpoint */
-	  EP3_OUT,                        /* bEndpointAddress */
+	  EP2_OUT,                        /* bEndpointAddress */
 	  0x02,                              /* bmAttributes: Bulk */
-	  ENDP3_RXSIZE,  /* wMaxPacketSize: */
+	  ENDP2_RXSIZE,  /* wMaxPacketSize: */
 	  0x00,
 	  0x00                              /* bInterval: ignore for Bulk transfer */
 	  /* 67 */

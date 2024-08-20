@@ -171,13 +171,13 @@ else{
 * Output         : None.
 * Return         : None.
 *******************************************************************************/
-void EP3_OUT_Callback(void)
+void EP2_OUT_Callback(void)
 {
 if(SetupPin){
 	uint16_t USB_Rx_Cnt;
 
   /* Get the received data buffer and update the counter */
-  USB_Rx_Cnt = USB_SIL_Read(EP3_OUT, USB_Rx_Buffer);
+  USB_Rx_Cnt = USB_SIL_Read(EP2_OUT, USB_Rx_Buffer);
 
   /* USB data will be immediately processed, this allow next USB traffic being
   NAKed till the end of the USART Xfer */
@@ -185,7 +185,7 @@ if(SetupPin){
   USB_To_USART_Send_Data(USB_Rx_Buffer, USB_Rx_Cnt);
 
   /* Enable the receive of data on EP3 */
-  SetEPRxValid(ENDP3);
+  SetEPRxValid(ENDP2);
 }
 else{
 	g_blaster_rx_req = TRUE;

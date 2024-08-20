@@ -214,28 +214,28 @@ void Device_Reset(void)
     SetEPTxStatus(ENDP1, EP_TX_NAK);
     SetEPRxStatus(ENDP1, EP_RX_DIS);
 
-    /* Initialize Endpoint 2 as INTERRUPT */
-    SetEPType(ENDP2, EP_INTERRUPT);
-    SetEPTxAddr(ENDP2, ENDP2_TXADDR);
-    SetEPRxStatus(ENDP2, EP_RX_DIS);
-    SetEPTxStatus(ENDP2, EP_TX_NAK);
+    /* Initialize Endpoint 3 as INTERRUPT */
+    SetEPType(ENDP3, EP_INTERRUPT);
+    SetEPTxAddr(ENDP3, ENDP3_TXADDR);
+    SetEPRxStatus(ENDP3, EP_RX_DIS);
+    SetEPTxStatus(ENDP3, EP_TX_NAK);
 
-    /* Initialize Endpoint 3 as BULK OUT */
-    SetEPType(ENDP3, EP_BULK);
+    /* Initialize Endpoint 2 as BULK OUT */
+    SetEPType(ENDP2, EP_BULK);
     if(SetupPin){
-    	SetEPRxAddr(ENDP3, ENDP3_RXADDR0);
-    	SetEPRxCount(ENDP3, CDC_DATA_SIZE);
+    	SetEPRxAddr(ENDP2, ENDP2_RXADDR1);
+    	SetEPRxCount(ENDP2, CDC_DATA_SIZE);
     }
     else{
-    	SetEPDoubleBuff(ENDP3);
-    	SetEPDblBuffAddr(ENDP3, ENDP3_RXADDR0, ENDP3_RXADDR1);
-    	SetEPDblBuffCount(ENDP3, EP_DBUF_OUT, ENDP3_RXSIZE);
-    	ClearDTOG_RX(ENDP3);
-    	ClearDTOG_TX(ENDP3);
-    	ToggleDTOG_TX(ENDP3);
+    	SetEPDoubleBuff(ENDP2);
+    	SetEPDblBuffAddr(ENDP2, ENDP2_RXADDR0, ENDP2_RXADDR1);
+    	SetEPDblBuffCount(ENDP2, EP_DBUF_OUT, ENDP2_RXSIZE);
+    	ClearDTOG_RX(ENDP2);
+    	ClearDTOG_TX(ENDP2);
+    	ToggleDTOG_TX(ENDP2);
     }
-    SetEPRxStatus(ENDP3, EP_RX_VALID);
-    SetEPTxStatus(ENDP3, EP_TX_DIS);
+    SetEPRxStatus(ENDP2, EP_RX_VALID);
+    SetEPTxStatus(ENDP2, EP_TX_DIS);
 
 
 

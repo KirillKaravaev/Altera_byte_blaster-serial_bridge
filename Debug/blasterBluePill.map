@@ -893,8 +893,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_adc.o
  .debug_macro   0x00000000      0x2e4 ./stdperiph/src/stm32f10x_adc.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_adc.o
- .debug_line    0x00000000     0x1923 ./stdperiph/src/stm32f10x_adc.o
- .debug_str     0x00000000    0x38838 ./stdperiph/src/stm32f10x_adc.o
+ .debug_line    0x00000000     0x194d ./stdperiph/src/stm32f10x_adc.o
+ .debug_str     0x00000000    0x38846 ./stdperiph/src/stm32f10x_adc.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_adc.o
  .debug_frame   0x00000000      0x52c ./stdperiph/src/stm32f10x_adc.o
  .ARM.attributes
@@ -961,8 +961,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_bkp.o
  .debug_macro   0x00000000      0x144 ./stdperiph/src/stm32f10x_bkp.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_bkp.o
- .debug_line    0x00000000      0x989 ./stdperiph/src/stm32f10x_bkp.o
- .debug_str     0x00000000    0x36d9c ./stdperiph/src/stm32f10x_bkp.o
+ .debug_line    0x00000000      0x9b3 ./stdperiph/src/stm32f10x_bkp.o
+ .debug_str     0x00000000    0x36daa ./stdperiph/src/stm32f10x_bkp.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_bkp.o
  .debug_frame   0x00000000      0x1a8 ./stdperiph/src/stm32f10x_bkp.o
  .ARM.attributes
@@ -1055,8 +1055,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_can.o
  .debug_macro   0x00000000      0x3c9 ./stdperiph/src/stm32f10x_can.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_can.o
- .debug_line    0x00000000     0x1798 ./stdperiph/src/stm32f10x_can.o
- .debug_str     0x00000000    0x37e63 ./stdperiph/src/stm32f10x_can.o
+ .debug_line    0x00000000     0x17c2 ./stdperiph/src/stm32f10x_can.o
+ .debug_str     0x00000000    0x37e71 ./stdperiph/src/stm32f10x_can.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_can.o
  .debug_frame   0x00000000      0x3b0 ./stdperiph/src/stm32f10x_can.o
  .ARM.attributes
@@ -1126,8 +1126,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_cec.o
  .debug_macro   0x00000000       0xc2 ./stdperiph/src/stm32f10x_cec.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_cec.o
- .debug_line    0x00000000      0x9bb ./stdperiph/src/stm32f10x_cec.o
- .debug_str     0x00000000    0x3671b ./stdperiph/src/stm32f10x_cec.o
+ .debug_line    0x00000000      0x9e5 ./stdperiph/src/stm32f10x_cec.o
+ .debug_str     0x00000000    0x36729 ./stdperiph/src/stm32f10x_cec.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_cec.o
  .debug_frame   0x00000000      0x1fc ./stdperiph/src/stm32f10x_cec.o
  .ARM.attributes
@@ -1178,8 +1178,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x18 ./stdperiph/src/stm32f10x_crc.o
  .debug_macro   0x00000000      0xa8b ./stdperiph/src/stm32f10x_crc.o
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_crc.o
- .debug_line    0x00000000      0x627 ./stdperiph/src/stm32f10x_crc.o
- .debug_str     0x00000000    0x33e35 ./stdperiph/src/stm32f10x_crc.o
+ .debug_line    0x00000000      0x651 ./stdperiph/src/stm32f10x_crc.o
+ .debug_str     0x00000000    0x33e43 ./stdperiph/src/stm32f10x_crc.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_crc.o
  .debug_frame   0x00000000       0xe8 ./stdperiph/src/stm32f10x_crc.o
  .ARM.attributes
@@ -1245,8 +1245,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_dac.o
  .debug_macro   0x00000000      0x175 ./stdperiph/src/stm32f10x_dac.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_dac.o
- .debug_line    0x00000000      0xb20 ./stdperiph/src/stm32f10x_dac.o
- .debug_str     0x00000000    0x36f79 ./stdperiph/src/stm32f10x_dac.o
+ .debug_line    0x00000000      0xb4a ./stdperiph/src/stm32f10x_dac.o
+ .debug_str     0x00000000    0x36f87 ./stdperiph/src/stm32f10x_dac.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_dac.o
  .debug_frame   0x00000000      0x1bc ./stdperiph/src/stm32f10x_dac.o
  .ARM.attributes
@@ -1293,8 +1293,8 @@ Discarded input sections
  .debug_macro   0x00000000      0xa8b ./stdperiph/src/stm32f10x_dbgmcu.o
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_dbgmcu.o
  .debug_macro   0x00000000       0xa6 ./stdperiph/src/stm32f10x_dbgmcu.o
- .debug_line    0x00000000      0x5fc ./stdperiph/src/stm32f10x_dbgmcu.o
- .debug_str     0x00000000    0x34297 ./stdperiph/src/stm32f10x_dbgmcu.o
+ .debug_line    0x00000000      0x626 ./stdperiph/src/stm32f10x_dbgmcu.o
+ .debug_str     0x00000000    0x342a5 ./stdperiph/src/stm32f10x_dbgmcu.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_dbgmcu.o
  .debug_frame   0x00000000       0x74 ./stdperiph/src/stm32f10x_dbgmcu.o
  .ARM.attributes
@@ -1358,8 +1358,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_dma.o
  .debug_macro   0x00000000      0x3aa ./stdperiph/src/stm32f10x_dma.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_dma.o
- .debug_line    0x00000000      0xf29 ./stdperiph/src/stm32f10x_dma.o
- .debug_str     0x00000000    0x385bd ./stdperiph/src/stm32f10x_dma.o
+ .debug_line    0x00000000      0xf53 ./stdperiph/src/stm32f10x_dma.o
+ .debug_str     0x00000000    0x385cb ./stdperiph/src/stm32f10x_dma.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_dma.o
  .debug_frame   0x00000000      0x1a4 ./stdperiph/src/stm32f10x_dma.o
  .ARM.attributes
@@ -1535,8 +1535,8 @@ Discarded input sections
  .debug_macro   0x00000000      0xa8b ./stdperiph/src/stm32f10x_flash.o
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_flash.o
  .debug_macro   0x00000000      0x2cf ./stdperiph/src/stm32f10x_flash.o
- .debug_line    0x00000000      0xdd0 ./stdperiph/src/stm32f10x_flash.o
- .debug_str     0x00000000    0x35b5f ./stdperiph/src/stm32f10x_flash.o
+ .debug_line    0x00000000      0xdfa ./stdperiph/src/stm32f10x_flash.o
+ .debug_str     0x00000000    0x35b6d ./stdperiph/src/stm32f10x_flash.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_flash.o
  .debug_frame   0x00000000      0x3f8 ./stdperiph/src/stm32f10x_flash.o
  .ARM.attributes
@@ -1617,8 +1617,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_fsmc.o
  .debug_macro   0x00000000      0x273 ./stdperiph/src/stm32f10x_fsmc.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_fsmc.o
- .debug_line    0x00000000     0x17f5 ./stdperiph/src/stm32f10x_fsmc.o
- .debug_str     0x00000000    0x37ab7 ./stdperiph/src/stm32f10x_fsmc.o
+ .debug_line    0x00000000     0x181f ./stdperiph/src/stm32f10x_fsmc.o
+ .debug_str     0x00000000    0x37ac5 ./stdperiph/src/stm32f10x_fsmc.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_fsmc.o
  .debug_frame   0x00000000      0x2d0 ./stdperiph/src/stm32f10x_fsmc.o
  .ARM.attributes
@@ -1820,8 +1820,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_i2c.o
  .debug_macro   0x00000000      0x2ae ./stdperiph/src/stm32f10x_i2c.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_i2c.o
- .debug_line    0x00000000     0x14be ./stdperiph/src/stm32f10x_i2c.o
- .debug_str     0x00000000    0x381f4 ./stdperiph/src/stm32f10x_i2c.o
+ .debug_line    0x00000000     0x14e8 ./stdperiph/src/stm32f10x_i2c.o
+ .debug_str     0x00000000    0x38202 ./stdperiph/src/stm32f10x_i2c.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_i2c.o
  .debug_frame   0x00000000      0x4bc ./stdperiph/src/stm32f10x_i2c.o
  .ARM.attributes
@@ -1874,8 +1874,8 @@ Discarded input sections
  .debug_macro   0x00000000      0xa8b ./stdperiph/src/stm32f10x_iwdg.o
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_iwdg.o
  .debug_macro   0x00000000       0x5e ./stdperiph/src/stm32f10x_iwdg.o
- .debug_line    0x00000000      0x69a ./stdperiph/src/stm32f10x_iwdg.o
- .debug_str     0x00000000    0x34238 ./stdperiph/src/stm32f10x_iwdg.o
+ .debug_line    0x00000000      0x6c4 ./stdperiph/src/stm32f10x_iwdg.o
+ .debug_str     0x00000000    0x34246 ./stdperiph/src/stm32f10x_iwdg.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_iwdg.o
  .debug_frame   0x00000000       0xe0 ./stdperiph/src/stm32f10x_iwdg.o
  .ARM.attributes
@@ -1936,8 +1936,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_pwr.o
  .debug_macro   0x00000000       0x7c ./stdperiph/src/stm32f10x_pwr.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_pwr.o
- .debug_line    0x00000000      0x84e ./stdperiph/src/stm32f10x_pwr.o
- .debug_str     0x00000000    0x36490 ./stdperiph/src/stm32f10x_pwr.o
+ .debug_line    0x00000000      0x878 ./stdperiph/src/stm32f10x_pwr.o
+ .debug_str     0x00000000    0x3649e ./stdperiph/src/stm32f10x_pwr.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_pwr.o
  .debug_frame   0x00000000      0x148 ./stdperiph/src/stm32f10x_pwr.o
  .ARM.attributes
@@ -2130,8 +2130,8 @@ Discarded input sections
  .debug_macro   0x00000000      0xa8b ./stdperiph/src/stm32f10x_rtc.o
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_rtc.o
  .debug_macro   0x00000000       0x52 ./stdperiph/src/stm32f10x_rtc.o
- .debug_line    0x00000000      0x8c0 ./stdperiph/src/stm32f10x_rtc.o
- .debug_str     0x00000000    0x342c1 ./stdperiph/src/stm32f10x_rtc.o
+ .debug_line    0x00000000      0x8ea ./stdperiph/src/stm32f10x_rtc.o
+ .debug_str     0x00000000    0x342cf ./stdperiph/src/stm32f10x_rtc.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_rtc.o
  .debug_frame   0x00000000      0x200 ./stdperiph/src/stm32f10x_rtc.o
  .ARM.attributes
@@ -2234,8 +2234,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_sdio.o
  .debug_macro   0x00000000      0x33e ./stdperiph/src/stm32f10x_sdio.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_sdio.o
- .debug_line    0x00000000     0x10a1 ./stdperiph/src/stm32f10x_sdio.o
- .debug_str     0x00000000    0x385be ./stdperiph/src/stm32f10x_sdio.o
+ .debug_line    0x00000000     0x10cb ./stdperiph/src/stm32f10x_sdio.o
+ .debug_str     0x00000000    0x385cc ./stdperiph/src/stm32f10x_sdio.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_sdio.o
  .debug_frame   0x00000000      0x440 ./stdperiph/src/stm32f10x_sdio.o
  .ARM.attributes
@@ -2322,8 +2322,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_spi.o
  .debug_macro   0x00000000      0x2be ./stdperiph/src/stm32f10x_spi.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_spi.o
- .debug_line    0x00000000     0x127a ./stdperiph/src/stm32f10x_spi.o
- .debug_str     0x00000000    0x37a72 ./stdperiph/src/stm32f10x_spi.o
+ .debug_line    0x00000000     0x12a4 ./stdperiph/src/stm32f10x_spi.o
+ .debug_str     0x00000000    0x37a80 ./stdperiph/src/stm32f10x_spi.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_spi.o
  .debug_frame   0x00000000      0x358 ./stdperiph/src/stm32f10x_spi.o
  .ARM.attributes
@@ -2547,8 +2547,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_tim.o
  .debug_macro   0x00000000      0x70b ./stdperiph/src/stm32f10x_tim.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_tim.o
- .debug_line    0x00000000     0x471e ./stdperiph/src/stm32f10x_tim.o
- .debug_str     0x00000000    0x3b1ab ./stdperiph/src/stm32f10x_tim.o
+ .debug_line    0x00000000     0x4748 ./stdperiph/src/stm32f10x_tim.o
+ .debug_str     0x00000000    0x3b1b9 ./stdperiph/src/stm32f10x_tim.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_tim.o
  .debug_frame   0x00000000      0xd10 ./stdperiph/src/stm32f10x_tim.o
  .ARM.attributes
@@ -2681,8 +2681,8 @@ Discarded input sections
  .debug_macro   0x00000000     0x7ee4 ./stdperiph/src/stm32f10x_wwdg.o
  .debug_macro   0x00000000       0x2e ./stdperiph/src/stm32f10x_wwdg.o
  .debug_macro   0x00000000      0x3e2 ./stdperiph/src/stm32f10x_wwdg.o
- .debug_line    0x00000000      0x717 ./stdperiph/src/stm32f10x_wwdg.o
- .debug_str     0x00000000    0x36033 ./stdperiph/src/stm32f10x_wwdg.o
+ .debug_line    0x00000000      0x741 ./stdperiph/src/stm32f10x_wwdg.o
+ .debug_str     0x00000000    0x36041 ./stdperiph/src/stm32f10x_wwdg.o
  .comment       0x00000000       0x44 ./stdperiph/src/stm32f10x_wwdg.o
  .debug_frame   0x00000000      0x11c ./stdperiph/src/stm32f10x_wwdg.o
  .ARM.attributes
@@ -3883,9 +3883,9 @@ LOAD C:/Program Files/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.
  .text.EP1_IN_Callback
                 0x08003d6c       0xb8 ./usb/usb_endp.o
                 0x08003d6c                EP1_IN_Callback
- .text.EP3_OUT_Callback
+ .text.EP2_OUT_Callback
                 0x08003e24       0x48 ./usb/usb_endp.o
-                0x08003e24                EP3_OUT_Callback
+                0x08003e24                EP2_OUT_Callback
  .text.SOF_Callback
                 0x08003e6c       0x30 ./usb/usb_endp.o
                 0x08003e6c                SOF_Callback
@@ -4615,93 +4615,93 @@ LOAD C:/Program Files/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.
  .debug_macro   0x00010d11       0x10 ./usb/usb_prop.o
  .debug_macro   0x00010d21      0x16a ./usb/usb_pwr.o
 
-.debug_line     0x00000000     0xf24f
- .debug_line    0x00000000      0x684 ./drv/led.o
- .debug_line    0x00000684      0x70c ./drv/timebase.o
- .debug_line    0x00000d90     0x100c ./fsusb/src/usb_core.o
- .debug_line    0x00001d9c      0x72f ./fsusb/src/usb_init.o
- .debug_line    0x000024cb      0x880 ./fsusb/src/usb_int.o
- .debug_line    0x00002d4b      0x7dc ./fsusb/src/usb_mem.o
- .debug_line    0x00003527      0xe97 ./fsusb/src/usb_regs.o
- .debug_line    0x000043be      0x764 ./fsusb/src/usb_sil.o
- .debug_line    0x00004b22      0x8c3 ./src/blaster.o
- .debug_line    0x000053e5      0x6a9 ./src/blaster_port.o
- .debug_line    0x00005a8e      0x883 ./src/ft245rom.o
- .debug_line    0x00006311      0xa0a ./src/main.o
- .debug_line    0x00006d1b      0x191 ./src/memop.o
- .debug_line    0x00006eac      0x990 ./src/ringbuf.o
- .debug_line    0x0000783c      0x856 ./stdperiph/src/misc.o
- .debug_line    0x00008092      0x907 ./stdperiph/src/stm32f10x_exti.o
- .debug_line    0x00008999      0xb41 ./stdperiph/src/stm32f10x_gpio.o
- .debug_line    0x000094da      0xd11 ./stdperiph/src/stm32f10x_rcc.o
- .debug_line    0x0000a1eb      0xaf7 ./stdperiph/src/stm32f10x_usart.o
- .debug_line    0x0000ace2       0x75 ./sys/startup_stm32f10x_md.o
- .debug_line    0x0000ad57      0x873 ./sys/stm32_it.o
- .debug_line    0x0000b5ca      0x6b4 ./sys/system_stm32f10x.o
- .debug_line    0x0000bc7e      0xb34 ./usb/hw_config.o
- .debug_line    0x0000c7b2      0x70d ./usb/usb_desc.o
- .debug_line    0x0000cebf      0x80a ./usb/usb_endp.o
- .debug_line    0x0000d6c9      0x787 ./usb/usb_istr.o
- .debug_line    0x0000de50      0xacd ./usb/usb_prop.o
- .debug_line    0x0000e91d      0x932 ./usb/usb_pwr.o
+.debug_line     0x00000000     0xf987
+ .debug_line    0x00000000      0x6ae ./drv/led.o
+ .debug_line    0x000006ae      0x736 ./drv/timebase.o
+ .debug_line    0x00000de4     0x1060 ./fsusb/src/usb_core.o
+ .debug_line    0x00001e44      0x783 ./fsusb/src/usb_init.o
+ .debug_line    0x000025c7      0x8d4 ./fsusb/src/usb_int.o
+ .debug_line    0x00002e9b      0x830 ./fsusb/src/usb_mem.o
+ .debug_line    0x000036cb      0xeeb ./fsusb/src/usb_regs.o
+ .debug_line    0x000045b6      0x7b8 ./fsusb/src/usb_sil.o
+ .debug_line    0x00004d6e      0x917 ./src/blaster.o
+ .debug_line    0x00005685      0x6e1 ./src/blaster_port.o
+ .debug_line    0x00005d66      0x8c9 ./src/ft245rom.o
+ .debug_line    0x0000662f      0xa5e ./src/main.o
+ .debug_line    0x0000708d      0x191 ./src/memop.o
+ .debug_line    0x0000721e      0x9c8 ./src/ringbuf.o
+ .debug_line    0x00007be6      0x88e ./stdperiph/src/misc.o
+ .debug_line    0x00008474      0x93f ./stdperiph/src/stm32f10x_exti.o
+ .debug_line    0x00008db3      0xb79 ./stdperiph/src/stm32f10x_gpio.o
+ .debug_line    0x0000992c      0xd49 ./stdperiph/src/stm32f10x_rcc.o
+ .debug_line    0x0000a675      0xb21 ./stdperiph/src/stm32f10x_usart.o
+ .debug_line    0x0000b196       0x75 ./sys/startup_stm32f10x_md.o
+ .debug_line    0x0000b20b      0x8c7 ./sys/stm32_it.o
+ .debug_line    0x0000bad2      0x6d0 ./sys/system_stm32f10x.o
+ .debug_line    0x0000c1a2      0xb96 ./usb/hw_config.o
+ .debug_line    0x0000cd38      0x761 ./usb/usb_desc.o
+ .debug_line    0x0000d499      0x85e ./usb/usb_endp.o
+ .debug_line    0x0000dcf7      0x7db ./usb/usb_istr.o
+ .debug_line    0x0000e4d2      0xb2f ./usb/usb_prop.o
+ .debug_line    0x0000f001      0x986 ./usb/usb_pwr.o
 
-.debug_str      0x00000000    0x595ff
- .debug_str     0x00000000    0x37dc9 ./drv/led.o
-                              0x37fc3 (size before relaxing)
- .debug_str     0x00037dc9      0x43f ./drv/timebase.o
-                              0x38171 (size before relaxing)
- .debug_str     0x00038208     0x4326 ./fsusb/src/usb_core.o
-                              0x3bdb4 (size before relaxing)
- .debug_str     0x0003c52e       0x4f ./fsusb/src/usb_init.o
-                              0x3b65e (size before relaxing)
- .debug_str     0x0003c57d       0x47 ./fsusb/src/usb_int.o
-                              0x3b345 (size before relaxing)
- .debug_str     0x0003c5c4       0x47 ./fsusb/src/usb_mem.o
-                              0x3b31e (size before relaxing)
- .debug_str     0x0003c60b      0x378 ./fsusb/src/usb_regs.o
-                              0x3b6a6 (size before relaxing)
- .debug_str     0x0003c983       0x6d ./fsusb/src/usb_sil.o
-                              0x3b386 (size before relaxing)
- .debug_str     0x0003c9f0      0x820 ./src/blaster.o
-                              0x3bf86 (size before relaxing)
- .debug_str     0x0003d210      0x73c ./src/blaster_port.o
-                              0x38779 (size before relaxing)
- .debug_str     0x0003d94c      0x31e ./src/ft245rom.o
-                              0x38030 (size before relaxing)
- .debug_str     0x0003dc6a     0x37d7 ./src/main.o
-                              0x3f623 (size before relaxing)
- .debug_str     0x00041441       0x22 ./src/memop.o
-                               0x3146 (size before relaxing)
- .debug_str     0x00041463       0xd7 ./src/ringbuf.o
-                              0x3af4b (size before relaxing)
- .debug_str     0x0004153a    0x15e89 ./stdperiph/src/misc.o
-                              0x4ec94 (size before relaxing)
- .debug_str     0x000573c3      0x1de ./stdperiph/src/stm32f10x_exti.o
-                              0x4ec17 (size before relaxing)
- .debug_str     0x000575a1      0x46a ./stdperiph/src/stm32f10x_gpio.o
-                              0x4f01d (size before relaxing)
- .debug_str     0x00057a0b      0xb1c ./stdperiph/src/stm32f10x_rcc.o
-                              0x4f5ec (size before relaxing)
- .debug_str     0x00058527      0x7e8 ./stdperiph/src/stm32f10x_usart.o
-                              0x3799f (size before relaxing)
- .debug_str     0x00058d0f       0x3a ./sys/startup_stm32f10x_md.o
-                                 0x81 (size before relaxing)
- .debug_str     0x00058d49      0x12f ./sys/stm32_it.o
-                              0x3bab5 (size before relaxing)
- .debug_str     0x00058e78       0xad ./sys/system_stm32f10x.o
-                              0x33eff (size before relaxing)
- .debug_str     0x00058f25      0x283 ./usb/hw_config.o
-                              0x3cf46 (size before relaxing)
- .debug_str     0x000591a8       0x96 ./usb/usb_desc.o
-                              0x3b5a5 (size before relaxing)
- .debug_str     0x0005923e       0x81 ./usb/usb_endp.o
-                              0x3bab1 (size before relaxing)
- .debug_str     0x000592bf       0x31 ./usb/usb_istr.o
-                              0x3b88a (size before relaxing)
- .debug_str     0x000592f0      0x20a ./usb/usb_prop.o
-                              0x3c68b (size before relaxing)
- .debug_str     0x000594fa      0x105 ./usb/usb_pwr.o
-                              0x3ba3a (size before relaxing)
+.debug_str      0x00000000    0x5960d
+ .debug_str     0x00000000    0x37dd7 ./drv/led.o
+                              0x37fd1 (size before relaxing)
+ .debug_str     0x00037dd7      0x43f ./drv/timebase.o
+                              0x3817f (size before relaxing)
+ .debug_str     0x00038216     0x4326 ./fsusb/src/usb_core.o
+                              0x3bdc2 (size before relaxing)
+ .debug_str     0x0003c53c       0x4f ./fsusb/src/usb_init.o
+                              0x3b66c (size before relaxing)
+ .debug_str     0x0003c58b       0x47 ./fsusb/src/usb_int.o
+                              0x3b353 (size before relaxing)
+ .debug_str     0x0003c5d2       0x47 ./fsusb/src/usb_mem.o
+                              0x3b32c (size before relaxing)
+ .debug_str     0x0003c619      0x378 ./fsusb/src/usb_regs.o
+                              0x3b6b4 (size before relaxing)
+ .debug_str     0x0003c991       0x6d ./fsusb/src/usb_sil.o
+                              0x3b394 (size before relaxing)
+ .debug_str     0x0003c9fe      0x820 ./src/blaster.o
+                              0x3bf94 (size before relaxing)
+ .debug_str     0x0003d21e      0x73c ./src/blaster_port.o
+                              0x38787 (size before relaxing)
+ .debug_str     0x0003d95a      0x31e ./src/ft245rom.o
+                              0x3803e (size before relaxing)
+ .debug_str     0x0003dc78     0x37d7 ./src/main.o
+                              0x3f631 (size before relaxing)
+ .debug_str     0x0004144f       0x22 ./src/memop.o
+                               0x3154 (size before relaxing)
+ .debug_str     0x00041471       0xd7 ./src/ringbuf.o
+                              0x3af59 (size before relaxing)
+ .debug_str     0x00041548    0x15e89 ./stdperiph/src/misc.o
+                              0x4eca2 (size before relaxing)
+ .debug_str     0x000573d1      0x1de ./stdperiph/src/stm32f10x_exti.o
+                              0x4ec25 (size before relaxing)
+ .debug_str     0x000575af      0x46a ./stdperiph/src/stm32f10x_gpio.o
+                              0x4f02b (size before relaxing)
+ .debug_str     0x00057a19      0xb1c ./stdperiph/src/stm32f10x_rcc.o
+                              0x4f5fa (size before relaxing)
+ .debug_str     0x00058535      0x7e8 ./stdperiph/src/stm32f10x_usart.o
+                              0x379ad (size before relaxing)
+ .debug_str     0x00058d1d       0x3a ./sys/startup_stm32f10x_md.o
+                                 0x8f (size before relaxing)
+ .debug_str     0x00058d57      0x12f ./sys/stm32_it.o
+                              0x3bac3 (size before relaxing)
+ .debug_str     0x00058e86       0xad ./sys/system_stm32f10x.o
+                              0x33f0d (size before relaxing)
+ .debug_str     0x00058f33      0x283 ./usb/hw_config.o
+                              0x3cf54 (size before relaxing)
+ .debug_str     0x000591b6       0x96 ./usb/usb_desc.o
+                              0x3b5b3 (size before relaxing)
+ .debug_str     0x0005924c       0x81 ./usb/usb_endp.o
+                              0x3babf (size before relaxing)
+ .debug_str     0x000592cd       0x31 ./usb/usb_istr.o
+                              0x3b898 (size before relaxing)
+ .debug_str     0x000592fe      0x20a ./usb/usb_prop.o
+                              0x3c699 (size before relaxing)
+ .debug_str     0x00059508      0x105 ./usb/usb_pwr.o
+                              0x3ba48 (size before relaxing)
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./drv/led.o
@@ -4762,6 +4762,6 @@ LOAD C:/Program Files/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.
  .debug_frame   0x00002858       0xc0 ./usb/usb_pwr.o
 
 .debug_line_str
-                0x00000000       0x65
+                0x00000000       0x73
  .debug_line_str
-                0x00000000       0x65 ./sys/startup_stm32f10x_md.o
+                0x00000000       0x73 ./sys/startup_stm32f10x_md.o
