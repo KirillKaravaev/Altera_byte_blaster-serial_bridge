@@ -36,12 +36,12 @@
 
 #include "stm32f10x_exti.h"
 
-
+#include "led.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-int flag = 0;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -231,15 +231,17 @@ void USART1_IRQHandler(void)
 	    (void)USART_ReceiveData(USART);
 	  }
 
-	  if(flag == 1){
-		  GPIOC->BSRR = GPIO_Pin_13;
-		  flag = 0;
-	  }
-	  else{
-		  GPIOC->BRR = GPIO_Pin_13;
-		  flag = 1;
-	  }
+////простой блинкер для проверки прерывания
+//	  if(flag == 1){
+//		  GPIOC->BSRR = GPIO_Pin_13;
+//		  flag = 0;
+//	  }
+//	  else{
+//		  GPIOC->BRR = GPIO_Pin_13;
+//		  flag = 1;
+//	  }
 
+//	  led_flash(1000, 100, 1);
 
 }
 /*******************************************************************************

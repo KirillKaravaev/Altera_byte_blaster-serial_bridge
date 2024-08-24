@@ -9,8 +9,8 @@
 ../usb/hw_config.c:235:6:USART_Config_Default	8	static
 ../usb/hw_config.c:268:6:USART_Config	8	static
 ../usb/hw_config.c:351:6:USB_To_USART_Send_Data	24	static
-../usb/hw_config.c:369:6:Handle_USBAsynchXfer	16	static
-../usb/hw_config.c:426:6:USART_To_USB_Send_Data	8	static
-../usb/hw_config.c:468:6:STM_USART_Init	24	static
-../usb/hw_config.c:523:6:Get_SerialNum	24	static
-../usb/hw_config.c:546:13:IntToUnicode	32	static
+../usb/hw_config.c:371:6:Handle_USBAsynchXfer	16	static
+../usb/hw_config.c:428:6:USART_To_USB_Send_Data	8	static
+../usb/hw_config.c:470:6:STM_USART_Init	24	static
+../usb/hw_config.c:525:6:Get_SerialNum	24	static
+../usb/hw_config.c:548:13:IntToUnicode	32	static

@@ -4,7 +4,7 @@
 #include "usb_lib.h"
 #include "usb_istr.h"
 
-
+#include "led.h"
 #include "usb_desc.h"
 #include "usb_mem.h"
 #include "usb_pwr.h"
@@ -22,6 +22,8 @@ extern  uint8_t USART_Rx_Buffer[];
 extern uint32_t USART_Rx_ptr_out;
 extern uint32_t USART_Rx_length;
 extern uint8_t  USB_Tx_State;
+
+extern int LED_counter;
 
 extern __IO BOOL g_blaster_rx_req;
 extern __IO BOOL g_blaster_tx_ready;
@@ -91,7 +93,7 @@ if(SetupPin){
 else{
 	g_blaster_tx_ready = TRUE;
 }
-
+	LED_blink(&LED_counter, 1);
 }
 
 /*--------------------------------------------EP for CDC--------------------------------------------------------*/
@@ -179,17 +181,26 @@ if(SetupPin){
   /* Get the received data buffer and update the counter */
   USB_Rx_Cnt = USB_SIL_Read(EP2_OUT, USB_Rx_Buffer);
 
+  /* Set DE pin for HalfDuplex transmit */
+  GPIO_SetBits(GPIOA, DE_Pin);
+
   /* USB data will be immediately processed, this allow next USB traffic being
   NAKed till the end of the USART Xfer */
 
   USB_To_USART_Send_Data(USB_Rx_Buffer, USB_Rx_Cnt);
 
-  /* Enable the receive of data on EP3 */
+  /* Reset DE pin after data was transmitted */
+  GPIO_ResetBits(GPIOA, DE_Pin);
+
+  /* Enable the receive of data on EP2 */
   SetEPRxValid(ENDP2);
 }
 else{
 	g_blaster_rx_req = TRUE;
 }
+	//Мигает примерно так же, как при 300. Как??????
+	LED_blink(&LED_counter, 2);
+
 }
 
 

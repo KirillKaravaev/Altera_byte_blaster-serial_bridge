@@ -34,7 +34,9 @@
 #include "platform_config.h"
 #include "usb_type.h"
 #include "stm32f10x_usart.h"
+//#include "led.h"
 #include <stdbool.h>
+
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -43,8 +45,10 @@ extern uint8_t SetupPin;
 /* Exported define -----------------------------------------------------------*/
 #define MASS_MEMORY_START     		0x04002000
 #define BULK_MAX_PACKET_SIZE  		0x00000040
-#define LED_ON                		0xF0
-#define LED_OFF               		0xFF
+//#define LED_ON                		0xF0
+//#define LED_OFF               		0xFF
+
+#define DE_Pin						GPIO_Pin_8
 
 #define USART_RX_DATA_SIZE    		2048
 

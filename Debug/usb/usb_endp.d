@@ -23,7 +23,10 @@ usb/usb_endp.o: ../usb/usb_endp.c \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_sil.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_mem.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_int.h \
- ../usb/usb_istr.h ../usb/usb_conf.h ../usb/usb_desc.h \
+ ../usb/usb_istr.h ../usb/usb_conf.h \
+ D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/drv/led.h \
+ D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/drv/base.h \
+ ../usb/usb_desc.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_mem.h \
  ../usb/usb_pwr.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_core.h
@@ -53,6 +56,8 @@ D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bri
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_int.h:
 ../usb/usb_istr.h:
 ../usb/usb_conf.h:
+D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/drv/led.h:
+D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/drv/base.h:
 ../usb/usb_desc.h:
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_mem.h:
 ../usb/usb_pwr.h:

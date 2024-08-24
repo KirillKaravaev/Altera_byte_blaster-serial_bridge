@@ -356,7 +356,9 @@ void USB_To_USART_Send_Data(uint8_t* data_buffer, uint8_t Nb_bytes)
   for (i = 0; i < Nb_bytes; i++)
   {
     USART_SendData(USART, *(data_buffer + i));
+    /* Wait until end of transmit one byte */
     while(USART_GetFlagStatus(USART, USART_FLAG_TXE) == RESET);
+    /* After it move to next byte */
   }
 }
 

@@ -38,25 +38,31 @@ SOFTWARE.
 /*-----------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;   		//Структура для инициализации пинов
 
+//Объявлены в качестве extern в hw_config.h, также там содержатся другие объявления пинов
 uint8_t SetupPin;
+int LED_counter = 0;
 
-void PinStateSetup(void);					//Настроечный пин, от значения на нем зависит, будет ли устройство
+void SetupPinInit(void);					//Настроечный пин, от значения на нем зависит, будет ли устройство
 											//функционировать как Com - порт или как Altera Usb Byte Blaster
 void BlasterInit(void);
 
-
+void DE_PinInit(void);						//Пин для полудуплексного режима передачи.В функции EP2_OUT_Callback
+										    //выставляется перед началом передачи данных при помощи
+											//USB_To_USART_Send_Data и сбрасывается после нее
 //void CDCInit(void);
 
 int main(void)
 {
-	PinStateSetup();
+	SetupPinInit();
 	SetupPin = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1);
 //	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1))
 //		CDCInit();
 //	else
-		BlasterInit();
+	DE_PinInit();
+	BlasterInit();
 
-	led_init();
+	timebase_init();
+	LED_init();
 
     USB_HW_Config();
     USB_Init();
@@ -64,7 +70,11 @@ int main(void)
 //    led_flash(1000, 100, 0);
 
     while (1) {
-//        led_update();
+//    	if(LED_counter > 0)
+//    		LED_counter--;
+//    	else
+//    		GPIOC->BRR = GPIO_Pin_13;
+        LED_update(&LED_counter);
         if (bDeviceState == CONFIGURED)
         {
             blaster_exec();
@@ -73,8 +83,8 @@ int main(void)
 }
 
 /*-----------------------------------*/
-void PinStateSetup(void){
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+void SetupPinInit(void){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//Включаем тактирование GPIOA
 
 //	GPIO_StructInit(&GPIO_InitStructure);						//Заполняет поля структуры значениями по умолчанию
 
@@ -85,7 +95,17 @@ void PinStateSetup(void){
 	GPIO_Init(GPIOA, &GPIO_InitStructure);						// Применяем настроки на порт А
 
 //	int PinState = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1);	//Читаем состояние настроечного пина
+}
 
+void DE_PinInit(void){
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//Включаем тактирование GPIOA
+
+
+	//Заполняем поля структуры нашими параметрами
+	GPIO_InitStructure.GPIO_Pin = DE_Pin;						// Первый вывод порта
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;			// Режим "Выход" Push-Pull - подтягиваем к 0 или 1
+	GPIO_Init(GPIOA, &GPIO_InitStructure);						// Применяем настроки на порт А
 }
 
 void BlasterInit(void){
@@ -94,8 +114,6 @@ void BlasterInit(void){
 	// disable JTAG��use SWD only
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 
-	timebase_init();
-//	led_init();
 	blaster_init();
 }
 

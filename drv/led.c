@@ -3,157 +3,82 @@ led.c - led driver
 
 MIT License
 
-Copyright (c) 2016 Yongqian Tang
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 */
 
-#include "base.h"
-#include "timebase.h"
+//#include "base.h"
 #include "led.h"
 
-// LEDģʽö��
-typedef enum {
-    LED_MODE_NORMAL,    // ��ͨģʽ����/��
-    LED_MODE_FLASH,     // ��˸ģʽ
+#define LED_PIN_EM				GPIO_Pin_13		//Встроенные(EMbedded) светодиод на плате BLUEPILL
+#define GPIO_PORT_EM			GPIOC
 
-    LED_MODE_MAX
-} led_mode_e;
+#define LED_PIN_R				GPIO_Pin_15			//Красный светодиод
+#define GPIO_PORT_R				GPIOB
 
-// LEDģʽ
-static led_mode_e s_led_mode;
+#define LED_PIN_G				GPIO_Pin_13			//Зеленый светодиод
+#define GPIO_PORT_G				GPIOB
 
-// �ϴθ���ʱ��(ms)
-static uint32_t s_led_last_time;
+//Makros for led ON/OFF
+#define LED_ON(GPIO,PIN)        GPIO->BRR = PIN		//Светодиоды подключены к +3.3В, поэтому подача 0 включает их
+#define LED_OFF(GPIO,PIN)       GPIO->BSRR = PIN
 
-// LED��ʱ(ms)
-static uint16_t s_led_timer;
+extern uint8_t SetupPin;
 
-// LED��˸����(ms)
-static uint16_t s_led_period;
-
-// LEDÿ��˸���ڵ���ʱ��(ms)
-static uint16_t s_led_pulse;
-
-// LED��˸����
-static uint16_t s_led_cycle_cnt;
-
-/*-----------------------------------*/
-
-// ��/��LED
-#if defined(BLUEPILL)
-#define LED_ON()        GPIOC->BSRR = GPIO_Pin_13
-#define LED_OFF()       GPIOC->BRR = GPIO_Pin_13
-#elif defined(STLINK_V2_CLONE_DONGLE)
-#define LED_ON()	GPIOA->BSRR = GPIO_Pin_9
-#define LED_OFF()	GPIOA->BRR = GPIO_Pin_9
-#endif
-
-// LED�˿ڳ�ʼ��
-static void led_gpio_config(void)
+static void LED_gpio_config(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
 
-#if defined(BLUEPILL)
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
-    // GPIOA Configuration: Pin 13
-    GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_13;
+
+    // GPIOC Configuration: Pin 13
+    GPIO_InitStructure.GPIO_Pin =  LED_PIN_EM;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-#elif defined(STLINK_V2_CLONE_DONGLE)
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    GPIO_Init(GPIO_PORT_EM, &GPIO_InitStructure);
 
-    // GPIOA Configuration: Pin 9
-    GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_9;
+    // GPIOB Configuration: Pin 13
+    GPIO_InitStructure.GPIO_Pin =  LED_PIN_G;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
-#endif
+    GPIO_Init(GPIO_PORT_G, &GPIO_InitStructure);
+
+    if(SetupPin){
+    // GPIOB Configuration: Pin 15
+    GPIO_InitStructure.GPIO_Pin =  LED_PIN_R;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_Init(GPIO_PORT_R, &GPIO_InitStructure);
+    }
+
+
+
 }
 
 /*-----------------------------------*/
-
-// LED��ʼ��
-void led_init(void)
+//Далее переключаем все пины, но при этом работать будут только проинициализированные
+void LED_init(void)
 {
-    led_gpio_config();
-    LED_OFF();
+    LED_gpio_config();
+    LED_ON(GPIO_PORT_EM,LED_PIN_EM);
+    LED_ON(GPIO_PORT_G,LED_PIN_G);
+    LED_ON(GPIO_PORT_R,LED_PIN_R);
 
-    s_led_last_time = millis();
-    s_led_mode = LED_MODE_NORMAL;
 }
 
-// LED����
-void led_light(BOOL is_light)
-{
-    s_led_mode = LED_MODE_NORMAL;
-    if (is_light) {
-        LED_ON();
-    } else {
-        LED_OFF();
-    }
+void LED_update(int *LED_counter){
+	if(*LED_counter > 0)
+		(*LED_counter)--;
+	else{
+		LED_ON(GPIO_PORT_EM,LED_PIN_EM);
+		LED_ON(GPIO_PORT_G,LED_PIN_G);
+		LED_ON(GPIO_PORT_R,LED_PIN_R);
+	}
+}
+void LED_blink(int *LED_counter, int blink_time){  //blink_time in ms, but it work correctly only with blink_time = 1-10
+	LED_OFF(GPIO_PORT_EM,LED_PIN_EM);
+	LED_OFF(GPIO_PORT_G,LED_PIN_G);
+	LED_OFF(GPIO_PORT_R,LED_PIN_R);
+	*LED_counter = SystemCoreClock*blink_time/1000;
 }
 
-// LED��˸
-// ����������(ms)������ʱ��(ms)����˸����(=0ʱһֱ��˸)
-void led_flash(uint16_t period, uint16_t pulse, uint16_t cycles)
-{
-    s_led_mode = LED_MODE_FLASH;
-    s_led_period = period;
-    s_led_pulse = pulse;
-    s_led_cycle_cnt = cycles;
-    s_led_timer = 0;
-    s_led_last_time = millis();
-    LED_OFF();
-}
-
-/*-----------------------------------*/
-
-// LED��ʱ����
-void led_update(void)
-{
-    uint32_t t;
-
-    switch (s_led_mode) {
-    case LED_MODE_FLASH:
-        t = millis();
-        s_led_timer += (t - s_led_last_time);
-        s_led_last_time = t;
-        if (s_led_timer >= s_led_pulse) {
-            LED_OFF();
-        }
-        if (s_led_timer >= s_led_period) {
-            if (s_led_cycle_cnt > 0) {
-                s_led_cycle_cnt--;
-                if (s_led_cycle_cnt == 0) {
-                    s_led_mode = LED_MODE_NORMAL;
-                    LED_OFF();
-                    return;
-                }
-            }
-            s_led_timer = 0;
-            LED_ON();
-        }
-        break;
-    default:
-        break;
-    }
-}
