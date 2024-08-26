@@ -171,6 +171,7 @@
 /**
   * @}
   */
+#		define assert_param(expr) ((void)0)				//иначе не видит этот макрос почему-то
 
 /** @defgroup ADC_Private_Functions
   * @{

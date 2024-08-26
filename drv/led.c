@@ -43,13 +43,13 @@ static void LED_gpio_config(void)
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_Init(GPIO_PORT_G, &GPIO_InitStructure);
 
-    if(SetupPin){
+//    if(SetupPin){
     // GPIOB Configuration: Pin 15
     GPIO_InitStructure.GPIO_Pin =  LED_PIN_R;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_Init(GPIO_PORT_R, &GPIO_InitStructure);
-    }
+//    }
 
 
 
@@ -62,7 +62,10 @@ void LED_init(void)
     LED_gpio_config();
     LED_ON(GPIO_PORT_EM,LED_PIN_EM);
     LED_ON(GPIO_PORT_G,LED_PIN_G);
-    LED_ON(GPIO_PORT_R,LED_PIN_R);
+
+    LED_OFF(GPIO_PORT_R,LED_PIN_R);	//Выключаем красный диод
+    if(SetupPin)
+    	LED_ON(GPIO_PORT_R,LED_PIN_R);
 
 }
 
@@ -72,13 +75,15 @@ void LED_update(int *LED_counter){
 	else{
 		LED_ON(GPIO_PORT_EM,LED_PIN_EM);
 		LED_ON(GPIO_PORT_G,LED_PIN_G);
-		LED_ON(GPIO_PORT_R,LED_PIN_R);
+		if(SetupPin)
+			LED_ON(GPIO_PORT_R,LED_PIN_R);
 	}
 }
 void LED_blink(int *LED_counter, int blink_time){  //blink_time in ms, but it work correctly only with blink_time = 1-10
 	LED_OFF(GPIO_PORT_EM,LED_PIN_EM);
 	LED_OFF(GPIO_PORT_G,LED_PIN_G);
-	LED_OFF(GPIO_PORT_R,LED_PIN_R);
+	if(SetupPin)
+		LED_OFF(GPIO_PORT_R,LED_PIN_R);
 	*LED_counter = SystemCoreClock*blink_time/1000;
 }
 

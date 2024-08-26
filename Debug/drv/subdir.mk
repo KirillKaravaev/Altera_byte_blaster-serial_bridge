@@ -5,14 +5,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../drv/adc.c \
 ../drv/led.c \
 ../drv/timebase.c 
 
 OBJS += \
+./drv/adc.o \
 ./drv/led.o \
 ./drv/timebase.o 
 
 C_DEPS += \
+./drv/adc.d \
 ./drv/led.d \
 ./drv/timebase.d 
 
@@ -24,7 +27,7 @@ drv/%.o drv/%.su drv/%.cyclo: ../drv/%.c drv/subdir.mk
 clean: clean-drv
 
 clean-drv:
-	-$(RM) ./drv/led.cyclo ./drv/led.d ./drv/led.o ./drv/led.su ./drv/timebase.cyclo ./drv/timebase.d ./drv/timebase.o ./drv/timebase.su
+	-$(RM) ./drv/adc.cyclo ./drv/adc.d ./drv/adc.o ./drv/adc.su ./drv/led.cyclo ./drv/led.d ./drv/led.o ./drv/led.su ./drv/timebase.cyclo ./drv/timebase.d ./drv/timebase.o ./drv/timebase.su
 
 .PHONY: clean-drv
 

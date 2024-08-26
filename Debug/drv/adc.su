@@ -1,0 +1,2 @@
+../drv/adc.c:4:6:ADCInit	32	static
+../drv/adc.c:50:6:ADC1_Ch_Start	16	static

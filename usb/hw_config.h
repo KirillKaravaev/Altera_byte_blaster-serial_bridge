@@ -50,6 +50,9 @@ extern uint8_t SetupPin;
 
 #define DE_Pin						GPIO_Pin_8
 
+#define POW_Pin1					GPIO_Pin_10
+#define POW_Pin2					GPIO_Pin_11
+
 #define USART_RX_DATA_SIZE    		2048
 
 #define USART_1						//choose usart. При смене юсарта также нужно в файле stm32_it.c поменять

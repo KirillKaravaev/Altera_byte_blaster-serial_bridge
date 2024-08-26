@@ -8,6 +8,7 @@ usb/usb_endp.o: ../usb/usb_endp.c \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/cmsis/stm32/inc/system_stm32f10x.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/stdperiph/inc/stm32f10x_rcc.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/stdperiph/inc/stm32f10x_gpio.h \
+ D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/stdperiph/inc/stm32f10x_adc.h \
  ../usb/hw_config.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/drv/platform_config.h \
  D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_type.h \
@@ -39,6 +40,7 @@ D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bri
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/cmsis/stm32/inc/system_stm32f10x.h:
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/stdperiph/inc/stm32f10x_rcc.h:
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/stdperiph/inc/stm32f10x_gpio.h:
+D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/stdperiph/inc/stm32f10x_adc.h:
 ../usb/hw_config.h:
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/drv/platform_config.h:
 D:/Program/STM32/Altera\ blaster\ +\ COM\ -\ port/Altera_byte_blaster-serial_bridge/fsusb/inc/usb_type.h:

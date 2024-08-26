@@ -1,3 +1,4 @@
+"./drv/adc.o"
 "./drv/led.o"
 "./drv/timebase.o"
 "./fsusb/src/usb_core.o"

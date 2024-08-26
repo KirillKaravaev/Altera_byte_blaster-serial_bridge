@@ -34,6 +34,7 @@ SOFTWARE.
 #include "usb_lib.h"
 #include "usb_pwr.h"
 #include "blaster.h"
+#include "adc.h"
 
 /*-----------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;   		//Структура для инициализации пинов
@@ -41,6 +42,8 @@ GPIO_InitTypeDef GPIO_InitStructure;   		//Структура для иници�
 //Объявлены в качестве extern в hw_config.h, также там содержатся другие объявления пинов
 uint8_t SetupPin;
 int LED_counter = 0;
+float ADCValue1;
+float ADCValue2;
 
 void SetupPinInit(void);					//Настроечный пин, от значения на нем зависит, будет ли устройство
 											//функционировать как Com - порт или как Altera Usb Byte Blaster
@@ -49,16 +52,39 @@ void BlasterInit(void);
 void DE_PinInit(void);						//Пин для полудуплексного режима передачи.В функции EP2_OUT_Callback
 										    //выставляется перед началом передачи данных при помощи
 											//USB_To_USART_Send_Data и сбрасывается после нее
-//void CDCInit(void);
+
+void POW_PinInit(void);						//2 пина, которые сообщают информацию о возможностях источника питания
+											//в соответствии с таблицей ниже
+// 	 Напряжение на СС1 или СС2, В   |    Выдаваемый USB-хостом ток, А    |   POW_Pin1   |   POW_Pin2   |
+//				  0					|				 ?					 |      0		|		0	   |
+//	   	     0.2 - 0.65             |               0.5 				 |		0		|		1	   |
+//		     0.66 - 1.22            |               1.5 				 |		1		|		0	   |
+//		     1.23 - 2.04 		    |			  	3   				 |		1		|		1	   |
+
+//Случай нулевого напряжения на СС1 и СС2 соответствует подключению кабеля стандарта USB 2.0 и ниже, где нет линий
+//СС
 
 int main(void)
 {
+	ADCInit();
+	//Следующий код позволяет последовательно читать разные каналы ADC без DMA
+	//Активируем преобразование на первом канале ADC1, ждем завершения преобразования и считываем значение
+	ADC1_Ch_Start(ADC_Channel_1);
+	while(ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET){};
+	ADCValue1 = ADC_GetConversionValue(ADC1)*3.3/4095; //приводим к вольтам.4095 = 2^12 (12 битный ацп).3.3 - Vbat
+	//Активируем преобразование на втором канале ADC1, ждем завершения преобразования и считываем значение
+	ADC1_Ch_Start(ADC_Channel_2);
+	while(ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET){};
+	ADCValue2 = ADC_GetConversionValue(ADC1)*3.3/4095;
+	//На всякий случай выключаем АЦП,он нам больше не понадобится
+	ADC_DeInit(ADC1);
+
 	SetupPinInit();
-	SetupPin = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1);
-//	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1))
-//		CDCInit();
-//	else
+	SetupPin = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) || (ADCValue1 > 0.2);
+
+
 	DE_PinInit();
+	POW_PinInit();
 	BlasterInit();
 
 	timebase_init();
@@ -67,7 +93,24 @@ int main(void)
     USB_HW_Config();
     USB_Init();
 
-//    led_flash(1000, 100, 0);
+    if((ADCValue1 < 0.2) || (ADCValue2 < 0.2) ){	//Ток хоста неизвестен
+        GPIO_ResetBits(GPIOB,POW_Pin1);
+        GPIO_ResetBits(GPIOB,POW_Pin2);
+
+    }
+    else if((ADCValue1 > 0.2) && (ADCValue1 < 0.65) || (ADCValue2 > 0.2) && (ADCValue2 < 0.65)){
+    	GPIO_ResetBits(GPIOB,POW_Pin1);
+    	GPIO_SetBits(GPIOB,POW_Pin2);
+    }
+    else if((ADCValue1 > 0.66) && (ADCValue1 < 1.22) || (ADCValue2 > 0.66) && (ADCValue2 < 1.22)){
+    	GPIO_SetBits(GPIOB,POW_Pin1);
+    	GPIO_ResetBits(GPIOB,POW_Pin2);
+    }
+    else if((ADCValue1 > 1.23) && (ADCValue1 < 2.04) || (ADCValue2 > 1.23) && (ADCValue2 < 2.04)){
+        GPIO_SetBits(GPIOB,POW_Pin1);
+        GPIO_SetBits(GPIOB,POW_Pin2);
+    }
+
 
     while (1) {
 //    	if(LED_counter > 0)
@@ -89,7 +132,7 @@ void SetupPinInit(void){
 //	GPIO_StructInit(&GPIO_InitStructure);						//Заполняет поля структуры значениями по умолчанию
 
 	//Заполняем поля структуры нашими параметрами
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;					// Первый вывод порта
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;					// Первый вывод порта
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;				// Режим "Вход" InputPullDown - IPD
 	GPIO_Init(GPIOA, &GPIO_InitStructure);						// Применяем настроки на порт А
@@ -106,6 +149,23 @@ void DE_PinInit(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;			// Режим "Выход" Push-Pull - подтягиваем к 0 или 1
 	GPIO_Init(GPIOA, &GPIO_InitStructure);						// Применяем настроки на порт А
+}
+
+void POW_PinInit(void){
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//Включаем тактирование GPIOA
+
+
+	//Заполняем поля структуры нашими параметрами
+	GPIO_InitStructure.GPIO_Pin = POW_Pin1;						// Первый вывод порта
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;			// Режим "Выход" Push-Pull - подтягиваем к 0 или 1
+	GPIO_Init(GPIOB, &GPIO_InitStructure);						// Применяем настроки на порт А
+
+	//Заполняем поля структуры нашими параметрами
+	GPIO_InitStructure.GPIO_Pin = POW_Pin2;						// Первый вывод порта
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;			// Режим "Выход" Push-Pull - подтягиваем к 0 или 1
+	GPIO_Init(GPIOB, &GPIO_InitStructure);						// Применяем настроки на порт А
 }
 
 void BlasterInit(void){
