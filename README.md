@@ -1,2 +1,3 @@
-# stm32_altera_usb_blaster
-Port of https://github.com/Icenowy/USB-Blaster-GCC to Stm32CubeIDE
+Blaster GPIO configuration - src/blaster_port.h
+GPIO Out Configuration: TCK(PB3), TDI(PB6), TMS(PB5)
+GPIO In Configuration: TDO(PB4)
