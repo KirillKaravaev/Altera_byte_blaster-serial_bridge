@@ -46,11 +46,11 @@ SOFTWARE.
 // TDO: PB4
 #define TDO_IN()        PBI(4)
 
-// TDI: PB5
-#define TDI_OUT(d)      PBO(5) = (d)
+// TDI: PB6
+#define TDI_OUT(d)      PBO(6) = (d)
 
-// TMS: PB6
-#define TMS_OUT(d)      PBO(6) = (d)
+// TMS: PB5
+#define TMS_OUT(d)      PBO(5) = (d)
 
 #ifdef BLASTER_OE_LED_EN
 // OE/LED: PA8
@@ -101,7 +101,7 @@ void bport_init(void)
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
 #if defined(BLUEPILL)
-    // GPIO Out Configuration: TCK(PB3), TDI(PB5), TMS(PB6)
+    // GPIO Out Configuration: TCK(PB3), TDI(PB6), TMS(PB5)
     GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;

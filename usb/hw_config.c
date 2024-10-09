@@ -195,16 +195,16 @@ void USB_Cable_Ctrl(FunctionalState NewState)
 *******************************************************************************/
 void USB_GPIO_Config(void)		//Часть функции Set_System() в примере
 {
-    GPIO_InitTypeDef GPIO_InitStructure;
-
-    /* Enable the USB disconnect GPIO clock */
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-
-    /* PA15 used as USB pull-up */
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
+//    GPIO_InitTypeDef GPIO_InitStructure;
+//
+//    /* Enable the USB disconnect GPIO clock */
+//    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+//
+//    /* PA15 used as USB pull-up */
+//    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
+//    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+//    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+//    GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 /*******************************************************************************

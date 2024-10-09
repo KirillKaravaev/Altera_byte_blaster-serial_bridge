@@ -189,8 +189,12 @@ if(SetupPin){
 
   USB_To_USART_Send_Data(USB_Rx_Buffer, USB_Rx_Cnt);
 
+  /*wait until TC=1. This indicates that the transmission of the last frame is complete*/
+  while(USART_GetFlagStatus(USART, USART_FLAG_TC) == RESET){};
+
   /* Reset DE pin after data was transmitted */
   GPIO_ResetBits(GPIOA, DE_Pin);
+
 
   /* Enable the receive of data on EP2 */
   SetEPRxValid(ENDP2);
