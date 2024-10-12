@@ -39,8 +39,17 @@ SOFTWARE.
 /*-----------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;   		//Структура для инициализации пинов
 
+//Чтобы поменять частоту, нужно в папке cmsis/stm32/inc/stm32f10x.h поменять строку #define HSE_VALUE в
+//соответствии с установленным кварцем, а также в sys/system_stm32f10x.с поменять SYSCLK_FREQ_XXMHz,
+//добавить elsif и написать свою функцию SetSysClockToXX, поменяв в ней строку
+// RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL9); , где нужно выбрать свой множитель
+//RCC_CFGR_PLLMULL9 так, чтобы частота после умножения на него HSE была не более 90 Мгц, иначе USB не заработает,
+//так как для него максимальная частота 48 Мгц и максимальный делитель от PLLCLK равен 2.5 . Для его установки
+//нужно отредактировать файл  stdperiph/inc/stm32f10x_rcc.h , добавив делители 2 и 2.5 в соответствии с rm, а
+//также изменить делитель в usb\hw_config.c в функции USB_Clock_Config
+
 //Объявлены в качестве extern в hw_config.h, также там содержатся другие объявления пинов
-uint8_t SetupPin;
+uint8_t SetupPin = 0;
 int LED_counter = 0;
 float ADCValue1;
 float ADCValue2;
@@ -79,8 +88,10 @@ int main(void)
 	//На всякий случай выключаем АЦП,он нам больше не понадобится
 	ADC_DeInit(ADC1);
 
+	//Задавать режим работы можно либо напрямую через пин GPIO0, либо полярностью подключения Type-C
 	SetupPinInit();
-	SetupPin = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) || (ADCValue1 > 0.2);
+	SetupPin = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) || (ADCValue1 > 0.2); //Если установлен, то UART
+
 
 
 	DE_PinInit();
@@ -93,7 +104,7 @@ int main(void)
     USB_HW_Config();
     USB_Init();
 
-    if((ADCValue1 < 0.2) || (ADCValue2 < 0.2) ){	//Ток хоста неизвестен
+    if((ADCValue1 < 0.2) && (ADCValue2 < 0.2) ){	//Ток хоста неизвестен
         GPIO_ResetBits(GPIOB,POW_Pin1);
         GPIO_ResetBits(GPIOB,POW_Pin2);
 
@@ -113,10 +124,6 @@ int main(void)
 
 
     while (1) {
-//    	if(LED_counter > 0)
-//    		LED_counter--;
-//    	else
-//    		GPIOC->BRR = GPIO_Pin_13;
         LED_update(&LED_counter);
         if (bDeviceState == CONFIGURED)
         {
@@ -143,7 +150,6 @@ void SetupPinInit(void){
 void DE_PinInit(void){
 //	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//Включаем тактирование GPIOA
 
-
 	//Заполняем поля структуры нашими параметрами
 	GPIO_InitStructure.GPIO_Pin = DE_Pin;						// Первый вывод порта
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
@@ -152,26 +158,25 @@ void DE_PinInit(void){
 }
 
 void POW_PinInit(void){
-//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//Включаем тактирование GPIOA
-
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);		//Включаем тактирование GPIOB
 
 	//Заполняем поля структуры нашими параметрами
 	GPIO_InitStructure.GPIO_Pin = POW_Pin1;						// Первый вывод порта
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;			// Режим "Выход" Push-Pull - подтягиваем к 0 или 1
-	GPIO_Init(GPIOB, &GPIO_InitStructure);						// Применяем настроки на порт А
+	GPIO_Init(GPIOB, &GPIO_InitStructure);						// Применяем настроки на порт B
 
 	//Заполняем поля структуры нашими параметрами
 	GPIO_InitStructure.GPIO_Pin = POW_Pin2;						// Первый вывод порта
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			// Скорость на 50Мгц
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;			// Режим "Выход" Push-Pull - подтягиваем к 0 или 1
-	GPIO_Init(GPIOB, &GPIO_InitStructure);						// Применяем настроки на порт А
+	GPIO_Init(GPIOB, &GPIO_InitStructure);						// Применяем настроки на порт B
 }
 
 void BlasterInit(void){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 
-	// disable JTAG��use SWD only
+	// disable JTAG, use SWD only
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 
 	blaster_init();
