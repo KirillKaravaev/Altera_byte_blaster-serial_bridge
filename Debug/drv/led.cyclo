@@ -1,4 +1,4 @@
-../drv/led.c:26:13:LED_gpio_config	1
-../drv/led.c:60:6:LED_init	2
-../drv/led.c:72:6:LED_update	3
-../drv/led.c:82:6:LED_blink	2
+../drv/led.c:12:13:LED_gpio_config	1
+../drv/led.c:43:6:LED_init	2
+../drv/led.c:63:6:LED_update	3
+../drv/led.c:83:6:LED_blink	1

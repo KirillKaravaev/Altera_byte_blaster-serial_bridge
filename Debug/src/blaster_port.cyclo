@@ -1,5 +1,5 @@
-../src/blaster_port.c:97:6:bport_init	1
-../src/blaster_port.c:142:6:bport_state_set	1
-../src/blaster_port.c:157:9:bport_state_get	1
-../src/blaster_port.c:170:6:bport_shift_out	1
-../src/blaster_port.c:187:9:bport_shift_io	1
+../src/blaster_port.c:32:6:bport_init	1
+../src/blaster_port.c:77:6:bport_state_set	1
+../src/blaster_port.c:92:9:bport_state_get	1
+../src/blaster_port.c:105:6:bport_shift_out	1
+../src/blaster_port.c:122:9:bport_shift_io	1

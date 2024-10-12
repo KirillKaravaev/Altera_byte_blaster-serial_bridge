@@ -378,11 +378,18 @@ typedef struct
   * @{
   */
 
+//для GD32f103 описание делителей - по ключевому слову USBDPSC 88 стр rm - https://gd32mcu.com/data/documents/userManual/GD32F10x_User_Manual_Rev2.6.pdf
+
  #define RCC_USBCLKSource_PLLCLK_1Div5   ((uint8_t)0x00)
  #define RCC_USBCLKSource_PLLCLK_Div1    ((uint8_t)0x01)
+ #define RCC_USBCLKSource_PLLCLK_2Div5   ((uint8_t)0x10)
+ #define RCC_USBCLKSource_PLLCLK_Div2    ((uint8_t)0x11)
 
  #define IS_RCC_USBCLK_SOURCE(SOURCE) (((SOURCE) == RCC_USBCLKSource_PLLCLK_1Div5) || \
-                                      ((SOURCE) == RCC_USBCLKSource_PLLCLK_Div1))
+                                      ((SOURCE) == RCC_USBCLKSource_PLLCLK_Div1)   || \
+									  ((SOURCE) == RCC_USBCLKSource_PLLCLK_2Div5)  || \
+									  ((SOURCE) == RCC_USBCLKSource_PLLCLK_Div2))
+
 /**
   * @}
   */

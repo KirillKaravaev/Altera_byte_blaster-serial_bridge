@@ -94,7 +94,7 @@ void USB_HW_Config(void)
 void USB_Clock_Config(void)
 {
     /* Select USBCLK source */
-    RCC_USBCLKConfig(RCC_USBCLKSource_PLLCLK_1Div5);
+    RCC_USBCLKConfig(RCC_USBCLKSource_PLLCLK_2Div5);
 
     /* Enable the USB clock */
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_USB, ENABLE);

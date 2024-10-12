@@ -1,5 +1,0 @@
-../usb/usb_pwr.c:63:8:PowerOn	1
-../usb/usb_pwr.c:93:8:PowerOff	1
-../usb/usb_pwr.c:116:6:Suspend	5
-../usb/usb_pwr.c:221:6:Resume_Init	1
-../usb/usb_pwr.c:257:6:Resume	11

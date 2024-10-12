@@ -28,6 +28,73 @@ SOFTWARE.
 
 #include "base.h"
 
+/*-----------------------------------*/
+
+
+// uncomment to enable AS mode (no pins defined)
+//#define BLASTER_AS_MODE_EN
+
+// uncomment to enable OE/LED
+#define BLASTER_OE_LED_EN
+
+#if defined(BLUEPILL)
+// TCK: PB3
+#define TCK_OUT(d)      PBO(3) = (d)
+#define TCK_0()         TCK_OUT(0)
+#define TCK_1()         TCK_OUT(1)
+
+// TDO: PB4
+#define TDO_IN()        PBI(4)
+
+// TDI: PB6
+#define TDI_OUT(d)      PBO(6) = (d)
+
+// TMS: PB5
+#define TMS_OUT(d)      PBO(5) = (d)
+
+#ifdef BLASTER_OE_LED_EN
+// OE/LED: PA8
+#define OE_OUT(d)       PAO(8) = (d)
+#endif
+
+#elif defined(STLINK_V2_CLONE_DONGLE)
+// TCK: PA5
+#define TCK_OUT(d)      PAO(5) = (d)
+#define TCK_0()         TCK_OUT(0)
+#define TCK_1()         TCK_OUT(1)
+
+// TDO: PB14
+#define TDO_IN()        PBI(14)
+
+// TDI: PB8
+#define TDI_OUT(d)      PBO(8) = (d)
+
+// TMS: PB6
+#define TMS_OUT(d)      PBO(6) = (d)
+
+#ifdef BLASTER_OE_LED_EN
+// OE/LED: PA8
+#define OE_OUT(d)       PAO(8) = (d)
+#endif
+#else
+#error Unknown platform
+#endif
+
+#ifdef BLASTER_AS_MODE_EN
+// NCE: ??
+#define NCE_OUT(d)
+
+// NCS: ??
+#define NCS_OUT(d)
+#define NCS_GETOUT()        1
+
+// DATAOUT: ??
+#define DATAOUT_IN()        1
+#endif
+
+/*-----------------------------------*/
+
+
 // mode set
 #define BLASTER_STA_SHIFT           (0x80)
 #define BLASTER_STA_READ            (0x40)

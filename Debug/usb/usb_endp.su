@@ -1,3 +1,0 @@
-../usb/usb_endp.c:57:6:EP1_IN_Callback	16	static
-../usb/usb_endp.c:176:6:EP2_OUT_Callback	16	static
-../usb/usb_endp.c:214:6:SOF_Callback	8	static
