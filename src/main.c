@@ -45,11 +45,8 @@ GPIO_InitTypeDef GPIO_InitStructure;   		//Структура для иници�
 // RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL9); , где нужно выбрать свой множитель
 //RCC_CFGR_PLLMULL9 так, чтобы частота после умножения на него HSE была не более 90 Мгц, иначе USB не заработает,
 //так как для него максимальная частота 48 Мгц и максимальный делитель от PLLCLK равен 2.5 . Для его установки
-<<<<<<< HEAD
 //нужно отредактировать файл  stdperiph/inc/stm32f10x_rcc.h , добавив делители 2 и 2.5 в соответствии с rm (RCC_USBCLKSource_PLLCLK_2Div5), а
-=======
 //нужно отредактировать файл  stdperiph/inc/stm32f10x_rcc.h , добавив делители 2 и 2.5 в соответствии с rm, а
->>>>>>> 6ae5cb4d0eaf3c4d89de5265e0d51c15cba1dcc8
 //также изменить делитель в usb\hw_config.c в функции USB_Clock_Config
 
 //Объявлены в качестве extern в hw_config.h, также там содержатся другие объявления пинов
@@ -90,6 +87,7 @@ int main(void)
 	while(ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET){};
 	ADCValue2 = ADC_GetConversionValue(ADC1)*3.3/4095;
 	//На всякий случай выключаем АЦП,он нам больше не понадобится
+	delay_ms(100);
 	ADC_DeInit(ADC1);
 
 	//Задавать режим работы можно либо напрямую через пин GPIO0, либо полярностью подключения Type-C
@@ -113,15 +111,15 @@ int main(void)
         GPIO_ResetBits(GPIOB,POW_Pin2);
 
     }
-    else if((ADCValue1 > 0.2) && (ADCValue1 < 0.65) || (ADCValue2 > 0.2) && (ADCValue2 < 0.65)){
+    else if(((ADCValue1 > 0.2) && (ADCValue1 < 0.65)) || ((ADCValue2 > 0.2) && (ADCValue2 < 0.65))){
     	GPIO_ResetBits(GPIOB,POW_Pin1);
     	GPIO_SetBits(GPIOB,POW_Pin2);
     }
-    else if((ADCValue1 > 0.66) && (ADCValue1 < 1.22) || (ADCValue2 > 0.66) && (ADCValue2 < 1.22)){
+    else if(((ADCValue1 > 0.66) && (ADCValue1 < 1.22)) || ((ADCValue2 > 0.66) && (ADCValue2 < 1.22))){
     	GPIO_SetBits(GPIOB,POW_Pin1);
     	GPIO_ResetBits(GPIOB,POW_Pin2);
     }
-    else if((ADCValue1 > 1.23) && (ADCValue1 < 2.04) || (ADCValue2 > 1.23) && (ADCValue2 < 2.04)){
+    else if(((ADCValue1 > 1.23) && (ADCValue1 < 2.04)) || ((ADCValue2 > 1.23) && (ADCValue2 < 2.04))){
         GPIO_SetBits(GPIOB,POW_Pin1);
         GPIO_SetBits(GPIOB,POW_Pin2);
     }
