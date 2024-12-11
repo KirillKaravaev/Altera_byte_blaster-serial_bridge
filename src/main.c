@@ -101,6 +101,8 @@ int main(void)
     USB_HW_Config();
     USB_Init();
 
+
+/*
     if((ADCValue1 < 0.2) && (ADCValue2 < 0.2) ){	//Ток хоста неизвестен
         GPIO_ResetBits(GPIOB,POW_Pin1);
         GPIO_ResetBits(GPIOB,POW_Pin2);
@@ -126,7 +128,7 @@ int main(void)
 //    else
 //        	GPIO_SetBits(GPIOB,POW_Pin2);
 
-
+*/
     while (1) {
 //    	if(LED_counter > 0)
 //    		LED_counter--;
@@ -141,6 +143,7 @@ int main(void)
 }
 
 /*-----------------------------------*/
+
 void SetupPinInit(void){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//Включаем тактирование GPIOA
 

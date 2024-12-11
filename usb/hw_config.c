@@ -39,6 +39,7 @@
 #include "stm32f10x_exti.h"
 #include "stm32f10x_gpio.h"
 #include "misc.h"
+#include "timebase.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -188,23 +189,35 @@ void USB_Cable_Ctrl(FunctionalState NewState)
 
 /*******************************************************************************
 * Function Name  : USB_GPIO_Config
-* Description    : Configures the different GPIO ports.
+* Description    : Configures the different GPIO ports and reset USB connection
 * Input          : None
 * Output         : None
 * Return         : None
 *******************************************************************************/
 void USB_GPIO_Config(void)		//Часть функции Set_System() в примере
 {
-//    GPIO_InitTypeDef GPIO_InitStructure;
-//
-//    /* Enable the USB disconnect GPIO clock */
-//    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-//
-//    /* PA15 used as USB pull-up */
-//    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
-//    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-//    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-//    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    /* Enable the USB disconnect GPIO clock */
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+
+    /* PA12 used as USB out push-pull to reset usb connection */
+    GPIO_InitStructure.GPIO_Pin = USB_DP_Pin;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(USB_DP_Port, &GPIO_InitStructure);
+
+    //Pull down pin. As it's connect to VCC through 1.5 KOm res, host see low level and break the connection
+    GPIO_ResetBits(USB_DP_Port, USB_DP_Pin);
+    delay_ms(200);
+
+    //After it we configure pin as input floating
+    GPIO_InitStructure.GPIO_Pin = USB_DP_Pin;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(USB_DP_Port, &GPIO_InitStructure);
+
+
 }
 
 /*******************************************************************************

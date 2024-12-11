@@ -48,6 +48,9 @@ extern uint8_t SetupPin;
 //#define LED_ON                		0xF0
 //#define LED_OFF               		0xFF
 
+#define USB_DP_Port					GPIOA
+#define USB_DP_Pin					GPIO_Pin_12
+
 #define DE_Pin						GPIO_Pin_8
 
 #define POW_Pin1					GPIO_Pin_10
